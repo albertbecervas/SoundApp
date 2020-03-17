@@ -1,0 +1,11 @@
+apply plugin: 'com.android.library'
+apply from: "$rootDir/common-android.gradle"
+
+dependencies {
+    def modulesDependencies = rootProject.ext.modules
+    implementation modulesDependencies.appResources
+
+    def componentsDependencies = rootProject.ext.components
+    implementation componentsDependencies.bottom_nav
+}
+

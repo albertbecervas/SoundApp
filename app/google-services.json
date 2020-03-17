@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "516686028583",
+    "firebase_url": "https://soundapp-b69af.firebaseio.com",
+    "project_id": "soundapp-b69af",
+    "storage_bucket": "soundapp-b69af.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:516686028583:android:1cfec073c0ec76ca6e1302",
+        "android_client_info": {
+          "package_name": "com.abecerra.soundapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "516686028583-8kroadjar8d2nec9vh3evtvd7cplj5n0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.abecerra.soundapp",
+            "certificate_hash": "38a48a1378c7006196e43520437e896f8d6dc892"
+          }
+        },
+        {
+          "client_id": "516686028583-5hcdd9tpkk7gptbsrdsv2nb9iuaun1rn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_p89Q5eRU-LIvaVsxgESps1ae049FWbw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "516686028583-5hcdd9tpkk7gptbsrdsv2nb9iuaun1rn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,13 @@
+apply plugin: 'com.android.library'
+apply from: "$rootDir/common-android.gradle"
+
+dependencies {
+    def modulesDependencies = rootProject.ext.modules
+    implementation modulesDependencies.base
+    implementation modulesDependencies.appResources
+    implementation modulesDependencies.network
+
+    def firebaseDependencies = rootProject.ext.firebase
+    implementation firebaseDependencies.auth
+    implementation firebaseDependencies.google_auth
+}

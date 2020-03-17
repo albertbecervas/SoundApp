@@ -1,0 +1,6 @@
+include ':app-resources'
+include ':components'
+include ':app', ':session'
+rootProject.name='SoundApp'
+include ':base'
+include ':network'
