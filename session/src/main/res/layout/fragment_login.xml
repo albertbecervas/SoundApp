@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="@color/colorPrimary"
     tools:context=".login.view.LoginFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,6 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/login_title_margin_top"
             android:text="@string/sign_in"
+            android:textColor="@android:color/white"
             android:textSize="@dimen/login_title_text_size"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/app_logo"
@@ -64,7 +65,7 @@
         <Button
             android:id="@+id/bt_login"
             style="@style/ButtonSessionStyle"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorAccent"
             android:text="@string/login"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -89,6 +90,7 @@
                 android:id="@+id/tv_already_have_account"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:text="@string/or"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -143,6 +145,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/need_an_account"
                 android:textAllCaps="true"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -159,7 +162,7 @@
         <Button
             android:id="@+id/bt_signup"
             style="@style/ButtonSessionStyle"
-            android:background="@color/colorPrimaryDark"
+            android:background="@color/colorAccentVariant"
             android:text="@string/signup_with_email"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
