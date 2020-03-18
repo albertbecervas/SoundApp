@@ -1,6 +1,14 @@
 apply plugin: 'com.android.library'
 apply from: "$rootDir/common-android.gradle"
 
+android {
+    buildTypes {
+        debug {
+            buildConfigField "String", "API_URL", API_URL
+        }
+    }
+}
+
 dependencies {
     def modulesDependencies = rootProject.ext.modules
     implementation modulesDependencies.base
@@ -9,4 +17,8 @@ dependencies {
     def firebaseDependencies = rootProject.ext.firebase
     implementation firebaseDependencies.auth
     implementation firebaseDependencies.firestore
+
+    def retrofitDependencies = rootProject.ext.retrofit
+    implementation retrofitDependencies.retrofit
+    implementation retrofitDependencies.moshi
 }

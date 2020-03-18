@@ -28,12 +28,17 @@ dependencies {
     implementation firebaseDependencies.auth
     implementation firebaseDependencies.google_auth
 
+    def retrofitDependencies = rootProject.ext.retrofit
+    implementation retrofitDependencies.retrofit
+    implementation retrofitDependencies.moshi
+
     def modulesDependencies = rootProject.ext.modules
     implementation modulesDependencies.appResources
     implementation modulesDependencies.base
     implementation modulesDependencies.components
     implementation modulesDependencies.network
     implementation modulesDependencies.session
+    implementation modulesDependencies.feature_home
 
     def daggerDependencies = rootProject.ext.dagger
     implementation daggerDependencies.dagger

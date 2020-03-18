@@ -2,7 +2,6 @@ package com.abecerra.soundapp.scenes.main.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import com.abecerra.base.presentation.BaseActivity
 import com.abecerra.components.bottomnavigation.BottomNavigationListener
 import com.abecerra.soundapp.R
@@ -10,7 +9,7 @@ import com.abecerra.soundapp.di.component.DaggerViewComponent
 import com.abecerra.soundapp.di.module.presentation.ViewModule
 import com.abecerra.soundapp.scenes.launcher.view.LauncherActivity
 import com.abecerra.soundapp.scenes.main.presenter.MainPresenter
-import com.diet.session.authentication.domain.interactor.SessionInteractor
+import com.soundapp.session.authentication.domain.interactor.SessionInteractor
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
@@ -39,7 +38,6 @@ class MainActivity : BaseActivity(), MainView {
         bottom_navigation.setItems(presenter.getNavigationItems())
         bottom_navigation.setBottomNavigationListener(object : BottomNavigationListener {
             override fun onItemSelected(position: Int) {
-                Toast.makeText(this@MainActivity, "$position", Toast.LENGTH_SHORT).show()
                 when (position) {
                     4 -> {
                         sessionInteractor.logout()

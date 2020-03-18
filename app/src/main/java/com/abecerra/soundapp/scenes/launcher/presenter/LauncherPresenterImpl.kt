@@ -4,7 +4,7 @@ import android.os.Handler
 import com.abecerra.base.presentation.BasePresenterImpl
 import com.abecerra.soundapp.scenes.launcher.router.LauncherRouter
 import com.abecerra.soundapp.scenes.launcher.view.LauncherView
-import com.diet.session.authentication.domain.interactor.SessionInteractor
+import com.soundapp.session.authentication.domain.interactor.SessionInteractor
 
 class LauncherPresenterImpl(
     private val router: LauncherRouter,

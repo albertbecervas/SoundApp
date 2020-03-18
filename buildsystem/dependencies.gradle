@@ -28,7 +28,8 @@ ext {
             appResources: project(':app-resources'),
             components  : project(':components'),
             network     : project(':network'),
-            session     : project(':session')
+            session     : project(':session'),
+            feature_home: project(':feature-home')
     ]
 
     components = [

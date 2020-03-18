@@ -1,9 +1,12 @@
 package com.abecerra.soundapp.di.module.data
 
-import com.diet.network.authentication.AuthService
-import com.diet.session.authentication.data.SessionRepositoryImpl
-import com.diet.session.authentication.domain.repository.SessionRepository
-import com.diet.session.user.data.UserDataSource
+import com.soundapp.feature_home.data.HomeRepositoryImpl
+import com.soundapp.feature_home.domain.repository.HomeRepository
+import com.soundapp.network.authentication.AuthService
+import com.soundapp.network.music.MusicService
+import com.soundapp.session.authentication.data.SessionRepositoryImpl
+import com.soundapp.session.authentication.domain.repository.SessionRepository
+import com.soundapp.session.user.data.UserDataSource
 import dagger.Module
 import dagger.Provides
 
@@ -15,5 +18,10 @@ class RepositoryModule {
         authService: AuthService, userDataSource: UserDataSource
     ): SessionRepository {
         return SessionRepositoryImpl(authService, userDataSource)
+    }
+
+    @Provides
+    fun provideHomeRepository(musicService: MusicService): HomeRepository {
+        return HomeRepositoryImpl(musicService)
     }
 }

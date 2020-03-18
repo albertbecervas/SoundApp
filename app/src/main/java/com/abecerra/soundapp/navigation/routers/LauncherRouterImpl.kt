@@ -4,7 +4,7 @@ import com.abecerra.soundapp.R
 import com.abecerra.soundapp.navigation.navigator.Navigator
 import com.abecerra.soundapp.scenes.launcher.router.LauncherRouter
 import com.abecerra.soundapp.scenes.main.view.MainActivity
-import com.diet.session.login.view.LoginFragment
+import com.soundapp.session.login.view.LoginFragment
 
 class LauncherRouterImpl(
     private val navigator: Navigator,

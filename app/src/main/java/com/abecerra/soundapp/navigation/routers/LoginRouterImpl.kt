@@ -4,8 +4,8 @@ import android.content.Intent
 import androidx.fragment.app.Fragment
 import com.abecerra.soundapp.navigation.navigator.Navigator
 import com.abecerra.soundapp.scenes.main.view.MainActivity
-import com.diet.session.login.router.LoginRouter
-import com.diet.session.login.view.LoginFragment
+import com.soundapp.session.login.router.LoginRouter
+import com.soundapp.session.login.view.LoginFragment
 
 class LoginRouterImpl(private val navigator: Navigator) : LoginRouter {
 
@@ -18,6 +18,6 @@ class LoginRouterImpl(private val navigator: Navigator) : LoginRouter {
     }
 
     override fun onUserLogged() {
-        navigator.startActivity(MainActivity::class.java)
+        navigator.startActivityFinishingCurrent(MainActivity::class.java)
     }
 }

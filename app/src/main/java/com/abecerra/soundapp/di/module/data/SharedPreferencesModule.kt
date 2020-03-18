@@ -1,8 +1,8 @@
 package com.abecerra.soundapp.di.module.data
 
 import android.content.Context
-import com.diet.session.user.data.UserDataSource
-import com.diet.session.user.data.UserSharedPreferences
+import com.soundapp.session.user.data.UserDataSource
+import com.soundapp.session.user.data.UserSharedPreferences
 import dagger.Module
 import dagger.Provides
 
