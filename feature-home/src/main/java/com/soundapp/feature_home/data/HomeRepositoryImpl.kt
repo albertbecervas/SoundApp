@@ -19,9 +19,13 @@ class HomeRepositoryImpl(private val musicService: MusicService) :
                 call: Call<ResponseDto<SongDto>>,
                 response: Response<ResponseDto<SongDto>>
             ) {
+                output?.onRockSongsReceived(
+                    SongDtoMapper.mapToSong(response.body()?.results ?: arrayListOf())
+                )
             }
 
             override fun onFailure(call: Call<ResponseDto<SongDto>>, t: Throwable) {
+
             }
         })
     }
