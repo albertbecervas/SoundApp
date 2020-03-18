@@ -8,6 +8,7 @@ import com.abecerra.soundapp.navigation.routers.MainRouterImpl
 import com.abecerra.soundapp.scenes.launcher.router.LauncherRouter
 import com.abecerra.soundapp.scenes.main.router.MainRouter
 import com.soundapp.feature_home.presentation.router.HomeRouter
+import com.soundapp.feature_home.presentation.view.HomeFragment
 import com.soundapp.session.login.router.LoginRouter
 import com.soundapp.session.login.view.LoginFragment
 import dagger.Module
@@ -22,8 +23,8 @@ class RouterModule {
     }
 
     @Provides
-    fun provideMainRouter(navigator: Navigator): MainRouter {
-        return MainRouterImpl(navigator)
+    fun provideMainRouter(navigator: Navigator, homeFragment: HomeFragment): MainRouter {
+        return MainRouterImpl(navigator, homeFragment)
     }
 
     @Provides

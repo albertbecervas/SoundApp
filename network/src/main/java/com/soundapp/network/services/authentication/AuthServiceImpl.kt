@@ -1,11 +1,12 @@
-package com.soundapp.network.authentication
+package com.soundapp.network.services.authentication
 
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
-class AuthServiceImpl : AuthService {
+class AuthServiceImpl :
+    AuthService {
     override fun login(
         userName: String,
         password: String,

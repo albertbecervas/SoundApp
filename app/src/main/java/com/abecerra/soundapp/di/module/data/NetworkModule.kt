@@ -1,9 +1,9 @@
 package com.abecerra.soundapp.di.module.data
 
 import com.soundapp.network.BuildConfig
-import com.soundapp.network.authentication.AuthService
-import com.soundapp.network.authentication.AuthServiceImpl
-import com.soundapp.network.music.MusicService
+import com.soundapp.network.services.authentication.AuthService
+import com.soundapp.network.services.authentication.AuthServiceImpl
+import com.soundapp.network.services.music.MusicService
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides

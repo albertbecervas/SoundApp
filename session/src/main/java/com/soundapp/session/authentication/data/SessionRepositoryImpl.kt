@@ -1,7 +1,7 @@
 package com.soundapp.session.authentication.data
 
 import com.abecerra.base.data.BaseRepositoryImpl
-import com.soundapp.network.authentication.AuthService
+import com.soundapp.network.services.authentication.AuthService
 import com.soundapp.session.authentication.domain.model.UserForm
 import com.soundapp.session.authentication.domain.repository.SessionRepository
 import com.soundapp.session.authentication.domain.repository.SessionRepositoryOutput

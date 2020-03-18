@@ -8,7 +8,7 @@ import androidx.test.espresso.action.ViewActions.replaceText
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.soundapp.network.authentication.AuthService
+import com.soundapp.network.services.authentication.AuthService
 import com.soundapp.session.R
 import com.soundapp.session.authentication.data.SessionRepositoryImpl
 import com.soundapp.session.authentication.domain.interactor.SessionInteractor

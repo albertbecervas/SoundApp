@@ -1,4 +1,4 @@
-package com.soundapp.network.authentication
+package com.soundapp.network.services.authentication
 
 interface AuthService {
 

@@ -1,6 +1,6 @@
 package com.soundapp.session.authentication.data
 
-import com.soundapp.network.authentication.AuthService
+import com.soundapp.network.services.authentication.AuthService
 import com.soundapp.session.authentication.domain.model.UserForm
 import com.soundapp.session.authentication.domain.repository.SessionRepositoryOutput
 import com.soundapp.session.user.data.UserDataSource
