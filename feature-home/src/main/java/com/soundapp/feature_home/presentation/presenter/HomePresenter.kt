@@ -6,4 +6,6 @@ import com.soundapp.feature_home.presentation.view.HomeView
 interface HomePresenter : BasePresenter<HomeView> {
 
     fun getInitialSongs()
+
+    fun getRockAdapter(): HomeSongAdapter
 }

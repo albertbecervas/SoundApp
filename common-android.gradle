@@ -59,6 +59,7 @@ dependencies {
     implementation appDependencies.androidx_support_legacy
     implementation appDependencies.constraintLayout
     implementation appDependencies.recyclerView
+    implementation appDependencies.cardView
 
     def testDependencies = rootProject.ext.testing
     testImplementation testDependencies.junit

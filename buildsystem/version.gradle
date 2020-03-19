@@ -15,7 +15,8 @@ ext {
             appCompat       : "1.1.0",
             recyclerView    : "1.1.0",
             support         : "1.0.0",
-            constraintLayout: "1.1.3"
+            constraintLayout: "1.1.3",
+            cardView        : "1.0.0"
     ]
 
     google = [

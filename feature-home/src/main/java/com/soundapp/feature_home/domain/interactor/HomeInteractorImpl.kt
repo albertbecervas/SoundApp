@@ -17,6 +17,6 @@ class HomeInteractorImpl(private val homeRepository: HomeRepository) :
     }
 
     override fun onRockSongsReceived(list: List<Song>) {
-
+        output?.onDefaultSongsReceived(list)
     }
 }

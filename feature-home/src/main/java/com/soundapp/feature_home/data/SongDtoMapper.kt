@@ -5,6 +5,7 @@ import com.soundapp.network.dto.SongDto
 import com.soundapp.network.utils.toBoolean
 import com.soundapp.network.utils.toDouble
 import com.soundapp.network.utils.toInt
+import com.soundapp.network.utils.toString
 
 object SongDtoMapper {
 
@@ -25,7 +26,7 @@ object SongDtoMapper {
                 previewUrl.toString(),
                 artworkUrl30.toString(),
                 artworkUrl60.toString(),
-                artWorkUrl100.toString(),
+                artworkUrl100.toString(),
                 collectionPrice.toDouble(),
                 trackPrice.toDouble(),
                 releaseDate.toString(),
