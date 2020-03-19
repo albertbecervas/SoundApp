@@ -1,6 +1,5 @@
 package com.soundapp.feature_home.presentation.presenter
 
-import android.util.Log
 import com.abecerra.base.presentation.BasePresenterImpl
 import com.soundapp.feature_home.domain.interactor.HomeInteractor
 import com.soundapp.feature_home.domain.interactor.HomeInteractorOutput
@@ -13,7 +12,9 @@ import com.soundapp.feature_home.presentation.view.HomeView
 class HomePresenterImpl(private val router: HomeRouter, private val interactor: HomeInteractor) :
     BasePresenterImpl<HomeView>(), HomePresenter, HomeInteractorOutput {
 
-    private val adapter: HomeSongAdapter = HomeSongAdapter()
+    private val rockAdapter: HomeSongAdapter = HomeSongAdapter()
+    private val jazzAdapter: HomeSongAdapter = HomeSongAdapter()
+    private val popAdapter: HomeSongAdapter = HomeSongAdapter()
 
     init {
         interactor.setInteractorOutput(this)
@@ -24,11 +25,15 @@ class HomePresenterImpl(private val router: HomeRouter, private val interactor: 
         getView()?.showLoading()
     }
 
-    override fun getRockAdapter(): HomeSongAdapter = adapter
+    override fun getRockAdapter(): HomeSongAdapter = rockAdapter
+    override fun getJazzAdapter(): HomeSongAdapter = jazzAdapter
+    override fun getPopAdapter(): HomeSongAdapter = popAdapter
 
     override fun onDefaultSongsReceived(list: List<Song>) {
         val songs: List<SongViewModel> = SongViewModelMapper.mapSongs(list)
-        adapter.setItems(songs)
+        rockAdapter.setItems(songs)
+        jazzAdapter.setItems(songs)
+        popAdapter.setItems(songs)
         getView()?.hideLoading()
     }
 }

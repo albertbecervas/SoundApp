@@ -8,4 +8,6 @@ interface HomePresenter : BasePresenter<HomeView> {
     fun getInitialSongs()
 
     fun getRockAdapter(): HomeSongAdapter
+    fun getJazzAdapter(): HomeSongAdapter
+    fun getPopAdapter(): HomeSongAdapter
 }
