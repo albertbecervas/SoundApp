@@ -2,6 +2,7 @@ package com.abecerra.soundapp.navigation.navigator
 
 import android.content.Intent
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import kotlin.reflect.KClass
 
 interface Navigator {
@@ -13,4 +14,6 @@ interface Navigator {
     fun startActivityForResult(intent: Intent, resultCode: Int, fragment: Fragment)
 
     fun replaceFragment(fragment: Fragment, layout: Int)
+
+    fun replaceFragment(fragment: Fragment, layout: Int, supportFragmentManager: FragmentManager)
 }

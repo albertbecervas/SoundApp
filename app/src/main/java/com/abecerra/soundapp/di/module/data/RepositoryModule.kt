@@ -2,6 +2,8 @@ package com.abecerra.soundapp.di.module.data
 
 import com.soundapp.feature_home.data.HomeRepositoryImpl
 import com.soundapp.feature_home.domain.repository.HomeRepository
+import com.soundapp.feature_search.main.data.SearchRepositoryImpl
+import com.soundapp.feature_search.main.domain.repository.SearchRepository
 import com.soundapp.network.services.authentication.AuthService
 import com.soundapp.network.services.music.MusicService
 import com.soundapp.session.authentication.data.SessionRepositoryImpl
@@ -23,5 +25,10 @@ class RepositoryModule {
     @Provides
     fun provideHomeRepository(musicService: MusicService): HomeRepository {
         return HomeRepositoryImpl(musicService)
+    }
+
+    @Provides
+    fun provideSearchRepository(musicService: MusicService): SearchRepository {
+        return SearchRepositoryImpl(musicService)
     }
 }

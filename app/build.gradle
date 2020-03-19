@@ -39,6 +39,7 @@ dependencies {
     implementation modulesDependencies.network
     implementation modulesDependencies.session
     implementation modulesDependencies.feature_home
+    implementation modulesDependencies.feature_search
 
     def daggerDependencies = rootProject.ext.dagger
     implementation daggerDependencies.dagger

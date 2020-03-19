@@ -15,6 +15,12 @@ import com.soundapp.session.authentication.domain.interactor.SessionInteractor
 import com.soundapp.session.login.presenter.LoginPresenter
 import com.soundapp.session.login.presenter.LoginPresenterImpl
 import com.soundapp.session.login.router.LoginRouter
+import com.soundapp.feature_search.main.domain.interactor.SearchInteractor
+import com.soundapp.feature_search.main.presentation.presenter.SearchPresenter
+import com.soundapp.feature_search.main.presentation.presenter.SearchPresenterImpl
+import com.soundapp.feature_search.main.presentation.router.SearchRouter
+import com.soundapp.feature_search.suggestions.SearchSuggestionsPresenter
+import com.soundapp.feature_search.suggestions.SearchSuggestionsPresenterImpl
 import dagger.Module
 import dagger.Provides
 
@@ -44,5 +50,17 @@ class PresenterModule {
     @Provides
     fun provideHomePresenter(router: HomeRouter, interactor: HomeInteractor): HomePresenter {
         return HomePresenterImpl(router, interactor)
+    }
+
+    @Provides
+    fun provideSearchPresenter(
+        router: SearchRouter, interactor: SearchInteractor
+    ): SearchPresenter {
+        return SearchPresenterImpl(router, interactor)
+    }
+
+    @Provides
+    fun provideSearchSuggestionsPresenter(interactor: SearchInteractor): SearchSuggestionsPresenter {
+        return SearchSuggestionsPresenterImpl(interactor)
     }
 }

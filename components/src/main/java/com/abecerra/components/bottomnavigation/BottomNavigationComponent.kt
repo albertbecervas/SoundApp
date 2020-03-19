@@ -15,6 +15,8 @@ class BottomNavigationComponent : LinearLayout {
 
     private var listener: BottomNavigationListener? = null
 
+    private val itemList: ArrayList<NavigationItem> = arrayListOf()
+
     constructor(context: Context) : super(context) {
         init()
     }
@@ -31,11 +33,17 @@ class BottomNavigationComponent : LinearLayout {
 
     fun setBottomNavigationListener(listener: BottomNavigationListener) {
         this.listener = listener
+        this.listener?.onItemSelected(0)
     }
 
     fun setItems(items: List<NavigationItem>) {
+        itemList.addAll(items)
         ah_bottom_nav.addItems(NavigationItemMapper.mapToAhBottomNavigationItems(items))
         ah_bottom_nav.titleState = AHBottomNavigation.TitleState.ALWAYS_SHOW
+    }
+
+    fun setItemSelected(position: Int) {
+        ah_bottom_nav.currentItem = position
     }
 
     private fun init() {

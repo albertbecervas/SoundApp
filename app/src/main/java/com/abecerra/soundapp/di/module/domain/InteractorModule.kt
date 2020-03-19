@@ -7,6 +7,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.soundapp.feature_home.domain.interactor.HomeInteractor
 import com.soundapp.feature_home.domain.interactor.HomeInteractorImpl
 import com.soundapp.feature_home.domain.repository.HomeRepository
+import com.soundapp.feature_search.main.domain.interactor.SearchInteractorImpl
+import com.soundapp.feature_search.main.domain.repository.SearchRepository
+import com.soundapp.feature_search.main.domain.interactor.SearchInteractor
 import dagger.Module
 import dagger.Provides
 
@@ -24,5 +27,12 @@ class InteractorModule {
     @Provides
     fun provideHomeInteractor(repository: HomeRepository): HomeInteractor {
         return HomeInteractorImpl(repository)
+    }
+
+    @Provides
+    fun provideSearchInteractor(repository: SearchRepository): SearchInteractor {
+        return SearchInteractorImpl(
+            repository
+        )
     }
 }

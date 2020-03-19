@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import java.lang.ref.WeakReference
 
 class NavigatorImpl(private val context: WeakReference<Context?>?) : Navigator {
@@ -29,9 +30,22 @@ class NavigatorImpl(private val context: WeakReference<Context?>?) : Navigator {
         when (context?.get()) {
             is AppCompatActivity -> {
                 (context.get() as AppCompatActivity).supportFragmentManager.beginTransaction()
-                    .add(layout, fragment).commit()
+                    .replace(layout, fragment)
+                    .addToBackStack(fragment::class.java.name)
+                    .commit()
             }
         }
+    }
+
+    override fun replaceFragment(
+        fragment: Fragment,
+        layout: Int,
+        supportFragmentManager: FragmentManager
+    ) {
+        supportFragmentManager.beginTransaction()
+            .replace(layout, fragment)
+            .addToBackStack(fragment::class.java.name)
+            .commit()
     }
 
 }

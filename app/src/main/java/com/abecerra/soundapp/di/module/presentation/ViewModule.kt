@@ -1,10 +1,14 @@
 package com.abecerra.soundapp.di.module.presentation
 
-import com.abecerra.appresources.Translator
 import android.content.Context
+import com.abecerra.appresources.Translator
 import com.abecerra.soundapp.AppApplication
 import com.soundapp.feature_home.presentation.presenter.HomePresenter
 import com.soundapp.feature_home.presentation.view.HomeFragment
+import com.soundapp.feature_search.main.presentation.presenter.SearchPresenter
+import com.soundapp.feature_search.main.presentation.view.SearchFragment
+import com.soundapp.feature_search.suggestions.SearchSuggestionsFragment
+import com.soundapp.feature_search.suggestions.SearchSuggestionsPresenter
 import com.soundapp.session.login.presenter.LoginPresenter
 import com.soundapp.session.login.view.LoginFragment
 import dagger.Module
@@ -32,5 +36,19 @@ class ViewModule(private val context: Context) {
         val homeFragment = HomeFragment()
         homeFragment.injectPresenter(presenter)
         return homeFragment
+    }
+
+    @Provides
+    fun provideSearchFragment(presenter: SearchPresenter): SearchFragment {
+        val searchFragment = SearchFragment()
+        searchFragment.injectPresenter(presenter)
+        return searchFragment
+    }
+
+    @Provides
+    fun provideSearchSuggestionsFragment(presenter: SearchSuggestionsPresenter): SearchSuggestionsFragment {
+        val searchSuggestionsFragment = SearchSuggestionsFragment()
+        searchSuggestionsFragment.injectPresenter(presenter)
+        return searchSuggestionsFragment
     }
 }
