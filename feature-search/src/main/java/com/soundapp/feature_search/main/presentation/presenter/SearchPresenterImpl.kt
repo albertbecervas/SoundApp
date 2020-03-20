@@ -1,49 +1,41 @@
 package com.soundapp.feature_search.main.presentation.presenter
 
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import com.abecerra.base.presentation.BasePresenterImpl
-import com.abecerra.components.search.SearchComponentOutput
-import com.soundapp.feature_search.main.domain.interactor.SearchInteractorOutput
-import com.soundapp.feature_search.main.domain.model.Song
-import com.soundapp.feature_search.main.presentation.model.SongViewModel
-import com.soundapp.feature_search.main.presentation.model.SongViewModelMapper
+import com.soundapp.feature_search.SearchConfigurator
+import com.soundapp.feature_search.main.SearchPresenterListener
 import com.soundapp.feature_search.main.presentation.router.SearchRouter
 import com.soundapp.feature_search.main.presentation.view.SearchView
-import com.soundapp.feature_search.main.domain.interactor.SearchInteractor
+import com.soundapp.feature_search.results.SearchResultsFragment
+import com.soundapp.feature_search.suggestions.SearchSuggestionsFragment
+import java.lang.ref.WeakReference
 
 class SearchPresenterImpl(
-    private val router: SearchRouter,
-    private val interactor: SearchInteractor
-) : BasePresenterImpl<SearchView>(), SearchPresenter, SearchInteractorOutput,
-    SearchComponentOutput {
+    private val router: SearchRouter
+) : BasePresenterImpl<SearchView>(), SearchPresenter, SearchPresenterListener {
 
-    init {
-        interactor.setInteractorOutput(this)
-    }
+    private var searchResultsFragment: WeakReference<SearchResultsFragment>? = null
 
-    override fun loadInitialSearchFragment() {
-        getChildFragmentManager()?.let {
-            router.loadSearchSuggestionsFragment(it)
+    private var searchSuggestionsFragment: WeakReference<SearchSuggestionsFragment>? = null
+
+    override fun setSearchResultsFragment(searchResultsFragment: SearchResultsFragment?) {
+        searchResultsFragment?.let {
+            it.injectPresenter(SearchConfigurator.configureSearchResultsPresenter())
+            this.searchResultsFragment = WeakReference(it)
         }
     }
 
-    override fun onDefaultSongsReceived(list: List<Song>) {
-        val songs: List<SongViewModel> = SongViewModelMapper.mapSongs(list)
-        getView()?.hideLoading()
+    override fun setSearchSuggestionsFragment(searchSuggestionsFragment: SearchSuggestionsFragment?) {
+        searchSuggestionsFragment?.let {
+            it.injectPresenter(SearchConfigurator.configureSearchSuggestionsFragment(this))
+            this.searchSuggestionsFragment = WeakReference(it)
+        }
     }
 
     override fun onSearch(text: String) {
-
+        searchResultsFragment?.get()?.setResults(arrayListOf())
     }
 
     override fun emptySearch() {
-        getChildFragmentManager()?.let {
-            router.loadSearchSuggestionsFragment(it)
-        }
-    }
-
-    private fun getChildFragmentManager(): FragmentManager? {
-        return (getView() as? Fragment)?.childFragmentManager
+        searchResultsFragment?.get()?.clearResults()
     }
 }

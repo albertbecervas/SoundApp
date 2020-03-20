@@ -7,8 +7,6 @@ import com.soundapp.feature_home.presentation.presenter.HomePresenter
 import com.soundapp.feature_home.presentation.view.HomeFragment
 import com.soundapp.feature_search.main.presentation.presenter.SearchPresenter
 import com.soundapp.feature_search.main.presentation.view.SearchFragment
-import com.soundapp.feature_search.suggestions.SearchSuggestionsFragment
-import com.soundapp.feature_search.suggestions.SearchSuggestionsPresenter
 import com.soundapp.session.login.presenter.LoginPresenter
 import com.soundapp.session.login.view.LoginFragment
 import dagger.Module
@@ -43,12 +41,5 @@ class ViewModule(private val context: Context) {
         val searchFragment = SearchFragment()
         searchFragment.injectPresenter(presenter)
         return searchFragment
-    }
-
-    @Provides
-    fun provideSearchSuggestionsFragment(presenter: SearchSuggestionsPresenter): SearchSuggestionsFragment {
-        val searchSuggestionsFragment = SearchSuggestionsFragment()
-        searchSuggestionsFragment.injectPresenter(presenter)
-        return searchSuggestionsFragment
     }
 }

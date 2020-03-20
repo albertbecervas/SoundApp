@@ -1,18 +1,9 @@
 package com.soundapp.feature_search.suggestions
 
 import com.abecerra.base.presentation.BasePresenterImpl
-import com.soundapp.feature_search.main.domain.interactor.SearchInteractor
-import com.soundapp.feature_search.main.domain.interactor.SearchInteractorOutput
-import com.soundapp.feature_search.main.domain.model.Song
+import com.soundapp.feature_search.main.SearchPresenterListener
 
-class SearchSuggestionsPresenterImpl(private val interactor: SearchInteractor) :
-    BasePresenterImpl<SearchSuggestionsView>(), SearchSuggestionsPresenter, SearchInteractorOutput {
+class SearchSuggestionsPresenterImpl(private val searchPresenterListener: SearchPresenterListener) :
+    BasePresenterImpl<SearchSuggestionsView>(), SearchSuggestionsPresenter {
 
-    init {
-        interactor.setInteractorOutput(this)
-    }
-
-    override fun onDefaultSongsReceived(list: List<Song>) {
-
-    }
 }

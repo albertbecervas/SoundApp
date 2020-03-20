@@ -8,7 +8,6 @@ import com.soundapp.feature_home.presentation.router.HomeRouter
 import com.soundapp.feature_home.presentation.view.HomeFragment
 import com.soundapp.feature_search.main.presentation.router.SearchRouter
 import com.soundapp.feature_search.main.presentation.view.SearchFragment
-import com.soundapp.feature_search.suggestions.SearchSuggestionsFragment
 import com.soundapp.session.login.router.LoginRouter
 import com.soundapp.session.login.view.LoginFragment
 import dagger.Module
@@ -43,9 +42,8 @@ class RouterModule {
 
     @Provides
     fun provideSearchRouter(
-        navigator: Navigator,
-        searchSuggestionsFragment: SearchSuggestionsFragment
+        navigator: Navigator
     ): SearchRouter {
-        return SearchRouterImpl(navigator, searchSuggestionsFragment)
+        return SearchRouterImpl(navigator)
     }
 }

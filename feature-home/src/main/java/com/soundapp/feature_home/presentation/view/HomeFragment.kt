@@ -31,14 +31,14 @@ class HomeFragment : BasePresenterFragment<HomePresenter>(R.layout.fragment_home
     }
 
     override fun showLoading() {
-        rock_loading.visibility = View.VISIBLE
-        jazz_loading.visibility = View.VISIBLE
-        pop_loading.visibility = View.VISIBLE
+        rock_loading?.visibility = View.VISIBLE
+        jazz_loading?.visibility = View.VISIBLE
+        pop_loading?.visibility = View.VISIBLE
     }
 
     override fun hideLoading() {
-        rock_loading.visibility = View.GONE
-        jazz_loading.visibility = View.GONE
-        pop_loading.visibility = View.GONE
+        rock_loading?.visibility = View.GONE
+        jazz_loading?.visibility = View.GONE
+        pop_loading?.visibility = View.GONE
     }
 }

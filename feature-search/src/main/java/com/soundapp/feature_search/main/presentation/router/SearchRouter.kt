@@ -5,4 +5,6 @@ import androidx.fragment.app.FragmentManager
 interface SearchRouter {
 
     fun loadSearchSuggestionsFragment(childFragmentManager: FragmentManager)
+
+    fun loadSearchResultsFragment(childFragmentManager: FragmentManager)
 }
