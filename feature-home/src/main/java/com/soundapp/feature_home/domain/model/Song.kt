@@ -2,6 +2,7 @@ package com.soundapp.feature_home.domain.model
 
 data class Song(
     val wrapperType: String,
+    val trackId: String,
     val artistName: String,
     val collectionName: String,
     val trackName: String,

@@ -29,38 +29,37 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_search_title" />
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="@dimen/constraint_layout_zero_dp"
-        app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:overScrollMode="never"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/searchComponent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <fragment
+            <FrameLayout
                 android:id="@+id/fl_search_results"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:name="com.soundapp.feature_search.results.SearchResultsFragment"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <fragment
+            <FrameLayout
                 android:id="@+id/fl_search_suggestions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:name="com.soundapp.feature_search.suggestions.SearchSuggestionsFragment"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/fl_search_results" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,8 +1,8 @@
 package com.soundapp.feature_search.main.domain.repository
 
-import com.soundapp.feature_search.main.domain.model.Song
+import com.soundapp.feature_search.main.domain.model.SearchSong
 
 interface SearchRepositoryOutput {
 
-    fun onRockSongsReceived(list: List<Song>)
+    fun onSearchResponse(list: List<SearchSong>)
 }

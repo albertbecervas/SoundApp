@@ -7,7 +7,7 @@ abstract class BasePresenterFragment<PRESENTER : BasePresenter<*>>(layout: Int) 
 
     protected var presenter: PRESENTER? = null
 
-    fun injectPresenter(presenter: PRESENTER) {
+    open fun injectPresenter(presenter: PRESENTER) {
         this.presenter = presenter
     }
 

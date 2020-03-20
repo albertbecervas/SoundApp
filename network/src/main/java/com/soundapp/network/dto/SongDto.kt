@@ -2,6 +2,7 @@ package com.soundapp.network.dto
 
 data class SongDto(
     val wrapperType: Any?,
+    val trackId: Any?,
     val artistName: Any?,
     val collectionName: Any?,
     val trackName: Any?,

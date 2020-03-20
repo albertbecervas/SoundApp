@@ -1,7 +1,8 @@
 package com.soundapp.feature_search.main.domain.model
 
-data class Song(
+data class SearchSong(
     val wrapperType: String,
+    val trackId: String,
     val artistName: String,
     val collectionName: String,
     val trackName: String,

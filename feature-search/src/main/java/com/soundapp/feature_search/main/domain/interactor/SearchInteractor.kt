@@ -5,5 +5,5 @@ import com.soundapp.feature_search.main.domain.interactor.SearchInteractorOutput
 
 interface SearchInteractor : BaseInteractor<SearchInteractorOutput> {
 
-    fun getInitialSongs()
+    fun searchSongs(term: String)
 }

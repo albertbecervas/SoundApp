@@ -1,4 +1,4 @@
-package com.soundapp.feature_search.suggestions
+package com.soundapp.feature_search.suggestions.view
 
 import com.abecerra.base.presentation.BaseView
 

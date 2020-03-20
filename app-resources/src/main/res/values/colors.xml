@@ -9,7 +9,12 @@
     <color name="cardBackground">#131313</color>
 
     <color name="black">#000000</color>
+    <color name="gray">#AEAEAE</color>
     <color name="white">#FFFFFF</color>
     <color name="transparent">#00FFFFFF</color>
+    <color name="red">#D9373C</color>
+    <color name="orange">#EE6D46</color>
+    <color name="green">#A9C6A8</color>
+    <color name="yellow">#E99E41</color>
 
 </resources>

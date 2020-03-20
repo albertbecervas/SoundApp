@@ -17,6 +17,7 @@ object SongDtoMapper {
         return with(from) {
             Song(
                 wrapperType.toString(),
+                trackId.toString(),
                 artistName.toString(),
                 collectionName.toString(),
                 trackName.toString(),

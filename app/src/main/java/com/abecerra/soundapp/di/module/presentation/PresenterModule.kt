@@ -11,6 +11,7 @@ import com.soundapp.feature_home.domain.interactor.HomeInteractor
 import com.soundapp.feature_home.presentation.presenter.HomePresenter
 import com.soundapp.feature_home.presentation.presenter.HomePresenterImpl
 import com.soundapp.feature_home.presentation.router.HomeRouter
+import com.soundapp.feature_search.main.domain.interactor.SearchInteractor
 import com.soundapp.feature_search.main.presentation.presenter.SearchPresenter
 import com.soundapp.feature_search.main.presentation.presenter.SearchPresenterImpl
 import com.soundapp.feature_search.main.presentation.router.SearchRouter
@@ -50,7 +51,9 @@ class PresenterModule {
     }
 
     @Provides
-    fun provideSearchPresenter(router: SearchRouter): SearchPresenter {
-        return SearchPresenterImpl(router)
+    fun provideSearchPresenter(
+        router: SearchRouter, interactor: SearchInteractor
+    ): SearchPresenter {
+        return SearchPresenterImpl(router, interactor)
     }
 }

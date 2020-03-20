@@ -8,7 +8,6 @@ import com.abecerra.soundapp.di.module.presentation.ViewModule
 import com.abecerra.soundapp.scenes.main.presenter.MainPresenter
 import com.soundapp.session.authentication.domain.interactor.SessionInteractor
 import kotlinx.android.synthetic.main.activity_main.*
-import java.lang.Exception
 import javax.inject.Inject
 
 class MainActivity : BaseActivity(), MainView {
@@ -28,16 +27,5 @@ class MainActivity : BaseActivity(), MainView {
 
         presenter.setView(this)
         presenter.setBottomNavigationComponent(bottom_navigation)
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        try {
-            val entry = supportFragmentManager
-                .getBackStackEntryAt(supportFragmentManager.backStackEntryCount - 1)
-            presenter.onBackStackChanged(entry.name)
-        } catch (e: Exception) {
-            finish()
-        }
     }
 }

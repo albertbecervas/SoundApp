@@ -1,7 +1,6 @@
 package com.soundapp.feature_search.main.data
 
 import com.abecerra.base.data.BaseRepositoryImpl
-import com.soundapp.feature_search.main.data.SongDtoMapper
 import com.soundapp.feature_search.main.domain.repository.SearchRepository
 import com.soundapp.feature_search.main.domain.repository.SearchRepositoryOutput
 import com.soundapp.network.dto.ResponseDto
@@ -15,14 +14,14 @@ class SearchRepositoryImpl(private val musicService: MusicService) :
     BaseRepositoryImpl<SearchRepositoryOutput>(),
     SearchRepository {
 
-    override fun getRockSongs() {
-        musicService.searchSongs("rock").enqueue(object : Callback<ResponseDto<SongDto>> {
+    override fun doSearchCallWithTerm(term: String) {
+        musicService.searchSongs(term).enqueue(object : Callback<ResponseDto<SongDto>> {
             override fun onResponse(
                 call: Call<ResponseDto<SongDto>>,
                 response: Response<ResponseDto<SongDto>>
             ) {
-                output?.onRockSongsReceived(
-                    SongDtoMapper.mapToSong(response.body()?.results ?: arrayListOf())
+                output?.onSearchResponse(
+                    SearchSongDtoMapper.mapToSong(response.body()?.results ?: arrayListOf())
                 )
             }
 

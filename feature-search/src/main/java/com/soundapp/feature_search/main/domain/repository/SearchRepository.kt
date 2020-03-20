@@ -4,5 +4,5 @@ import com.abecerra.base.data.BaseRepository
 
 interface SearchRepository : BaseRepository<SearchRepositoryOutput> {
 
-    fun getRockSongs()
+    fun doSearchCallWithTerm(term: String)
 }

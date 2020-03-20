@@ -1,10 +1,10 @@
 package com.soundapp.feature_search.main.presentation.model
 
-import com.soundapp.feature_search.main.domain.model.Song
+import com.soundapp.feature_search.main.domain.model.SearchSong
 
-object SongViewModelMapper {
+object SearchSongViewModelMapper {
 
-    fun mapSongs(from: List<Song>): List<SongViewModel> {
+    fun mapSongs(from: List<SearchSong>): List<SearchSongViewModel> {
         return from.map {
             mapSong(
                 it
@@ -12,10 +12,12 @@ object SongViewModelMapper {
         }
     }
 
-    private fun mapSong(from: Song): SongViewModel {
+    private fun mapSong(from: SearchSong): SearchSongViewModel {
         return with(from) {
-            SongViewModel(
+            SearchSongViewModel(
+                trackId,
                 trackName,
+                artistName,
                 trackTimeMillis.toString(),
                 trackPrice.toString(),
                 previewUrl
