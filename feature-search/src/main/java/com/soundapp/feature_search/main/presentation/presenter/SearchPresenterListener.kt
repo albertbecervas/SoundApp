@@ -1,4 +1,4 @@
-package com.soundapp.feature_search.main
+package com.soundapp.feature_search.main.presentation.presenter
 
 interface SearchPresenterListener {
 

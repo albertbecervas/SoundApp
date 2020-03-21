@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.abecerra.base.presentation.BasePresenterFragment
+import com.abecerra.components.search.SearchComponentOutput
 import com.soundapp.feature_search.R
 import com.soundapp.feature_search.main.presentation.model.SearchSongViewModel
 import com.soundapp.feature_search.results.presenter.SearchResultsPresenter
@@ -16,6 +17,7 @@ class SearchResultsFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        presenter?.setView(this)
         initViews()
     }
 
@@ -24,17 +26,12 @@ class SearchResultsFragment :
         rv_search_results.adapter = presenter?.getSearchResultsAdapter()
     }
 
-    override fun injectPresenter(presenter: SearchResultsPresenter) {
-        super.injectPresenter(presenter)
-        presenter.setView(this)
+    override fun showLoading() {
+        loading.visibility = View.VISIBLE
     }
 
-    fun setResults(list: List<SearchSongViewModel>) {
-        presenter?.setResults(list)
-    }
-
-    fun clearResults() {
-        presenter?.clearResults()
+    override fun hideLoading() {
+        loading.visibility = View.GONE
     }
 }
 
