@@ -3,12 +3,12 @@ package com.soundapp.feature_search.results.view
 import android.view.ViewGroup
 import com.abecerra.base.presentation.BaseAdapter
 import com.abecerra.base.utils.inflate
+import com.soundapp.feature_commons.presentation.model.SongViewModel
 import com.soundapp.feature_search.R
-import com.soundapp.feature_search.main.presentation.model.SearchSongViewModel
 
-class SearchResultsAdapter(private val onItemClick: (id: String) -> Unit) :
-    BaseAdapter<SearchResultsViewHolder, SearchSongViewModel>() {
-    override fun onBindViewHolder(holder: SearchResultsViewHolder, item: SearchSongViewModel, pos: Int) {
+class SearchResultsAdapter(private val onItemClick: (song: SongViewModel) -> Unit) :
+    BaseAdapter<SearchResultsViewHolder, SongViewModel>() {
+    override fun onBindViewHolder(holder: SearchResultsViewHolder, item: SongViewModel, pos: Int) {
         holder.bind(item, onItemClick)
     }
 

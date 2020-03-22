@@ -1,0 +1,96 @@
+package com.abecerra.soundapp.di.module.presentation
+
+import android.content.Context
+import android.net.Uri
+import com.abecerra.soundapp.navigation.routers.SongPlayerRouterImpl
+import com.google.android.exoplayer2.SimpleExoPlayer
+import com.google.android.exoplayer2.source.ConcatenatingMediaSource
+import com.google.android.exoplayer2.source.ProgressiveMediaSource
+import com.google.android.exoplayer2.ui.PlayerNotificationManager
+import com.google.android.exoplayer2.upstream.DataSource
+import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
+import com.google.android.exoplayer2.util.Util
+import com.soundapp.feature_commons.presentation.model.SongViewModel
+import com.soundapp.feature_player.R
+import com.soundapp.feature_player.presentation.notification.SongPlayerNotificationAdapter
+import com.soundapp.feature_player.presentation.notification.SongPlayerNotificationBuilder
+import com.soundapp.feature_player.presentation.presenter.SongPlayerPresenter
+import com.soundapp.feature_player.presentation.presenter.SongPlayerPresenterImpl
+import com.soundapp.feature_player.presentation.router.SongPlayerRouter
+import com.soundapp.feature_player.presentation.view.SongPlayerFragment
+import dagger.Module
+import dagger.Provides
+
+@Module
+class MediaPlayerModule(private val context: Context, private val songList: List<SongViewModel>) {
+
+    @Provides
+    fun provideContext(): Context = context
+
+    @Provides
+    fun provideDataSourceFactory(context: Context): DataSource.Factory {
+        return DefaultDataSourceFactory(
+            context, Util.getUserAgent(context, context.getString(R.string.app_name))
+        )
+    }
+
+    @Provides
+    fun provideMediaSources(dataSourceFactory: DataSource.Factory): Array<ProgressiveMediaSource> {
+
+        return songList.map {
+            ProgressiveMediaSource.Factory(dataSourceFactory)
+                .setTag(it)
+                .createMediaSource(Uri.parse(it.preview))
+        }.toTypedArray()
+    }
+
+    @Provides
+    fun provideConcatenatingMediaSource(progressiveMediaSource: Array<ProgressiveMediaSource>)
+            : ConcatenatingMediaSource {
+        return ConcatenatingMediaSource(*progressiveMediaSource)
+    }
+
+    @Provides
+    fun provideSongPlayerNotificationAdapter(songPlayerRouter: SongPlayerRouter):
+            SongPlayerNotificationAdapter {
+        return SongPlayerNotificationAdapter(songPlayerRouter)
+    }
+
+    @Provides
+    fun providePlayerNotificationManager(
+        context: Context,
+        songPlayerNotificationAdapter: SongPlayerNotificationAdapter
+    ): PlayerNotificationManager {
+        return SongPlayerNotificationBuilder(context, songPlayerNotificationAdapter)
+            .createSongPlayerNotificationPlayer()
+    }
+
+    @Provides
+    fun provideMediaPlayer(
+        context: Context,
+        songs: ConcatenatingMediaSource,
+        songPlayerNotificationManager: PlayerNotificationManager
+    ): SimpleExoPlayer {
+        val exoPlayer = SimpleExoPlayer.Builder(context).build()
+        exoPlayer.prepare(songs)
+        songPlayerNotificationManager.setPlayer(exoPlayer)
+        return exoPlayer
+    }
+
+    @Provides
+    fun provideSongPlayerRouter(context: Context): SongPlayerRouter {
+        return SongPlayerRouterImpl(context, songList)
+    }
+
+    @Provides
+    fun provideSongPlayerPresenter(simpleExoPlayer: SimpleExoPlayer): SongPlayerPresenter {
+        return SongPlayerPresenterImpl(simpleExoPlayer)
+    }
+
+    @Provides
+    fun provideSongPlayerFragment(presenter: SongPlayerPresenter): SongPlayerFragment {
+        val songPlayerFragment = SongPlayerFragment()
+        songPlayerFragment.injectPresenter(presenter)
+        return songPlayerFragment
+    }
+}

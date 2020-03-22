@@ -3,6 +3,7 @@ package com.soundapp.feature_search.main.presentation.presenter
 import com.abecerra.appresources.Translator
 import com.abecerra.base.presentation.BasePresenterImpl
 import com.abecerra.components.search.SearchComponent
+import com.soundapp.feature_commons.presentation.model.SongViewModel
 import com.soundapp.feature_search.SearchConfigurator
 import com.soundapp.feature_search.main.domain.interactor.SearchInteractor
 import com.soundapp.feature_search.main.presentation.router.SearchRouter
@@ -15,8 +16,7 @@ class SearchPresenterImpl(
     private val router: SearchRouter,
     private val translator: Translator,
     searchInteractor: SearchInteractor
-) : BasePresenterImpl<SearchView>(), SearchPresenter,
-    SearchPresenterListener {
+) : BasePresenterImpl<SearchView>(), SearchPresenter, SearchPresenterListener {
 
     private var searchResultsPresenter: SearchResultsPresenter =
         SearchConfigurator.configureSearchResultsPresenter(this, searchInteractor)
@@ -41,8 +41,8 @@ class SearchPresenterImpl(
         searchComponent.bindSearchOutput(searchResultsPresenter)
     }
 
-    override fun onSearchResultSelected(id: String) {
-        router.onSearchResultClicked(id)
+    override fun onSearchResultSelected(songs: List<SongViewModel>) {
+        router.onSearchResultClicked(songs.toTypedArray())
     }
 
     override fun onSearchSuggestionSelected(name: String) {

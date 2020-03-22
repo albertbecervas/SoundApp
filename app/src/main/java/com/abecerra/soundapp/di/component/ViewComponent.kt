@@ -9,6 +9,7 @@ import com.abecerra.soundapp.di.module.presentation.NavigationModule
 import com.abecerra.soundapp.di.module.presentation.PresenterModule
 import com.abecerra.soundapp.di.module.presentation.RouterModule
 import com.abecerra.soundapp.di.module.presentation.ViewModule
+import com.abecerra.soundapp.di.scope.PerApplication
 import com.abecerra.soundapp.scenes.launcher.view.LauncherActivity
 import com.abecerra.soundapp.scenes.main.view.MainActivity
 import dagger.Component
@@ -18,6 +19,7 @@ import dagger.Component
         NavigationModule::class, InteractorModule::class, RepositoryModule::class,
         NetworkModule::class, SharedPreferencesModule::class, GoogleAuthModule::class]
 )
+@PerApplication
 interface ViewComponent {
 
     fun inject(launcherActivity: LauncherActivity)

@@ -1,0 +1,13 @@
+apply plugin: 'com.android.library'
+apply from: "$rootDir/common-android.gradle"
+
+dependencies {
+    def modulesDependencies = rootProject.ext.modules
+    implementation modulesDependencies.base
+    implementation modulesDependencies.appResources
+    implementation modulesDependencies.components
+    implementation modulesDependencies.commons
+
+    implementation 'com.google.android.exoplayer:exoplayer:2.11.3'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+}

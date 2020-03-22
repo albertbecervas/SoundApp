@@ -1,6 +1,7 @@
 package com.soundapp.feature_search.main.data
 
 import com.abecerra.base.data.BaseRepositoryImpl
+import com.soundapp.feature_commons.domain.SongDtoMapper
 import com.soundapp.feature_search.main.domain.repository.SearchRepository
 import com.soundapp.feature_search.main.domain.repository.SearchRepositoryOutput
 import com.soundapp.network.dto.ResponseDto
@@ -21,7 +22,7 @@ class SearchRepositoryImpl(private val musicService: MusicService) :
                 response: Response<ResponseDto<SongDto>>
             ) {
                 output?.onSearchResponse(
-                    SearchSongDtoMapper.mapToSong(response.body()?.results ?: arrayListOf())
+                    SongDtoMapper.mapToSong(response.body()?.results ?: arrayListOf())
                 )
             }
 

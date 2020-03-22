@@ -1,4 +1,4 @@
-package com.soundapp.feature_home.domain.model
+package com.soundapp.feature_commons.domain.model
 
 data class Song(
     val wrapperType: String,

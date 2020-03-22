@@ -2,6 +2,7 @@ package com.abecerra.soundapp.navigation.navigator
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import java.lang.ref.WeakReference
@@ -11,6 +12,14 @@ class NavigatorImpl(private val context: WeakReference<Context?>?) : Navigator {
     override fun startActivity(clazz: Class<*>) {
         context?.get()?.let {
             it.startActivity(Intent(it, clazz))
+        }
+    }
+
+    override fun startActivity(clazz: Class<*>, extras: Bundle) {
+        context?.get()?.let {
+            val intent = Intent(it, clazz)
+            intent.putExtras(extras)
+            it.startActivity(intent)
         }
     }
 

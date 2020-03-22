@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".presentation.view.SongPlayerFragment">
+
+    <ImageView
+        android:id="@+id/iv_song_preview"
+        android:layout_width="@dimen/constraint_layout_zero_dp"
+        android:layout_height="@dimen/constraint_layout_zero_dp"
+        android:layout_marginTop="92dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.5"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.9" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_song_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_song_preview">
+
+        <TextView
+            android:id="@+id/tv_song_title"
+            android:layout_width="@dimen/constraint_layout_zero_dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.9"
+            tools:text="Como camarón" />
+
+        <TextView
+            android:id="@+id/tv_song_artist"
+            android:layout_width="@dimen/constraint_layout_zero_dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/gray"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_song_title"
+            app:layout_constraintWidth_percent="0.9"
+            tools:text="ESTOPA" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.exoplayer2.ui.PlayerControlView
+        android:id="@+id/player_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/constraint_layout_zero_dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_song_title"
+        app:show_timeout="0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

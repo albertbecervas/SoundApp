@@ -30,8 +30,10 @@ ext {
             components    : project(':components'),
             network       : project(':network'),
             session       : project(':session'),
+            commons       : project(':feature-commons'),
             feature_home  : project(':feature-home'),
-            feature_search: project(':feature-search')
+            feature_search: project(':feature-search'),
+            feature_player: project(':feature-player'),
     ]
 
     components = [

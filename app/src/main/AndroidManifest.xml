@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".scenes.launcher.view.LauncherActivity"
             android:theme="@style/FullScreenTheme">
@@ -21,8 +22,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".scenes.main.view.MainActivity"
-            android:windowSoftInputMode="adjustPan|adjustResize"/>
+        <activity
+            android:name=".scenes.main.view.MainActivity"
+            android:windowSoftInputMode="adjustPan|adjustResize" />
+        <activity
+            android:name=".scenes.player.SongPlayerActivity"
+            android:launchMode="singleTask"
+            android:parentActivityName=".scenes.main.view.MainActivity" />
     </application>
 
 </manifest>
