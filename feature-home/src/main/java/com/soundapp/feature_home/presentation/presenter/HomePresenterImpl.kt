@@ -1,19 +1,17 @@
 package com.soundapp.feature_home.presentation.presenter
 
 import com.abecerra.base.presentation.BasePresenterImpl
-import com.soundapp.feature_commons.presentation.SongViewModelMapper
-import com.soundapp.feature_commons.presentation.model.SongViewModel
 import com.soundapp.feature_home.domain.interactor.HomeInteractor
 import com.soundapp.feature_home.domain.interactor.HomeInteractorOutput
+import com.soundapp.feature_home.domain.model.HomeSection
+import com.soundapp.feature_home.presentation.model.SectionViewModelMapper
 import com.soundapp.feature_home.presentation.router.HomeRouter
 import com.soundapp.feature_home.presentation.view.HomeView
 
 class HomePresenterImpl(private val router: HomeRouter, private val interactor: HomeInteractor) :
     BasePresenterImpl<HomeView>(), HomePresenter, HomeInteractorOutput {
 
-    private val rockAdapter: HomeSongAdapter = HomeSongAdapter()
-    private val jazzAdapter: HomeSongAdapter = HomeSongAdapter()
-    private val popAdapter: HomeSongAdapter = HomeSongAdapter()
+    private val sectionsAdapter: HomeSectionAdapter = HomeSectionAdapter()
 
     init {
         interactor.setInteractorOutput(this)
@@ -21,18 +19,11 @@ class HomePresenterImpl(private val router: HomeRouter, private val interactor: 
 
     override fun getInitialSongs() {
         interactor.getInitialSongs()
-        getView()?.showLoading()
     }
 
-    override fun getRockAdapter(): HomeSongAdapter = rockAdapter
-    override fun getJazzAdapter(): HomeSongAdapter = jazzAdapter
-    override fun getPopAdapter(): HomeSongAdapter = popAdapter
+    override fun getSectionsAdapter(): HomeSectionAdapter = sectionsAdapter
 
-    override fun onDefaultSongsReceived(list: List<com.soundapp.feature_commons.domain.model.Song>) {
-        val songs: List<SongViewModel> = SongViewModelMapper.mapSongs(list)
-        rockAdapter.setItems(songs)
-        jazzAdapter.setItems(songs)
-        popAdapter.setItems(songs)
-        getView()?.hideLoading()
+    override fun onInitialSectionsReady(list: List<HomeSection>) {
+        sectionsAdapter.setItems(SectionViewModelMapper.map(list))
     }
 }
