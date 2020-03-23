@@ -11,7 +11,7 @@ class RecentSearchesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemVie
         item: RecentSearch, itemClicked: (text: String) -> Unit, onDelete: (text: String) -> Unit
     ) {
         itemView.tv_recent_search.text = item.searchTerm
-        itemView.tv_recent_search.setOnClickListener {
+        itemView.setOnClickListener {
             itemClicked(item.searchTerm)
         }
         itemView.iv_close.setOnClickListener {

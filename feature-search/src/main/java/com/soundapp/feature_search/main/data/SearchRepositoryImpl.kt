@@ -4,7 +4,7 @@ import com.abecerra.base.data.BaseRepositoryImpl
 import com.abecerra.base.utils.StringUtils.replaceSpacesBySymbol
 import com.soundapp.database.dao.search.SearchesDao
 import com.soundapp.database.entities.RecentSearchEntity
-import com.soundapp.feature_commons.domain.SongDtoMapper
+import com.soundapp.feature_commons.data.SongDtoMapper
 import com.soundapp.feature_search.main.domain.repository.SearchRepository
 import com.soundapp.feature_search.main.domain.repository.SearchRepositoryOutput
 import com.soundapp.network.dto.ResponseDto
@@ -20,7 +20,6 @@ class SearchRepositoryImpl(
 ) : BaseRepositoryImpl<SearchRepositoryOutput>(), SearchRepository {
 
     override fun doSearchCallWithTerm(term: String) {
-        searchesDao.addRecentSearch(RecentSearchEntity(term))
         musicService.searchSongs(replaceSpacesBySymbol(term, API_SPACE_SYMBOL))
             .enqueue(object : Callback<ResponseDto<SongDto>> {
                 override fun onResponse(
@@ -30,6 +29,7 @@ class SearchRepositoryImpl(
                     output?.onSearchResponse(
                         SongDtoMapper.mapToSong(response.body()?.results ?: arrayListOf())
                     )
+                    searchesDao.addRecentSearch(RecentSearchEntity(term))
                 }
 
                 override fun onFailure(call: Call<ResponseDto<SongDto>>, t: Throwable) {

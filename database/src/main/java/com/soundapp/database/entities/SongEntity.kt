@@ -16,7 +16,7 @@ open class SongEntity(
     var previewUrl: String = "",
     var artworkUrl30: String = "",
     var artworkUrl60: String = "",
-    var artWorkUrl100: String = "",
+    var artworkUrl100: String = "",
     var collectionPrice: Double = 0.0,
     var trackPrice: Double = 0.0,
     var releaseDate: String = "",

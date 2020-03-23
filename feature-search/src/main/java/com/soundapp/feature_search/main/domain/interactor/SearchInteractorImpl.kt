@@ -63,12 +63,6 @@ class SearchInteractorImpl(
         )
     }
 
-    override fun <T> preparePlayListFromItemSelected(item: T, list: ArrayList<T>): List<T> {
-        list.remove(item)
-        list.add(0, item)
-        return list
-    }
-
     override fun onSearchResponse(list: List<Song>) {
         if (list.isNotEmpty()) resultsOutput?.onSearchSongsReceived(list)
         else resultsOutput?.onNoResultsFound()

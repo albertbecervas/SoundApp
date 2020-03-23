@@ -39,10 +39,10 @@ class SearchSuggestionsPresenterImpl(
 
     override fun loadRecentSearches() {
         searchInteractor.getRecentSearches()
-        getView()?.showRecents()
     }
 
     override fun onRecentSearchesFound(list: List<RecentSearch>) {
+        getView()?.showRecents()
         recentSearchesAdapter.setItems(list)
     }
 

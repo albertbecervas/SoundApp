@@ -1,4 +1,4 @@
-package com.soundapp.feature_commons.domain
+package com.soundapp.feature_commons.data
 
 import com.soundapp.network.dto.SongDto
 import com.soundapp.network.utils.toBoolean

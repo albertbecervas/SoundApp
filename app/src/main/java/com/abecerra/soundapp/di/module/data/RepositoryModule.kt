@@ -1,6 +1,7 @@
 package com.abecerra.soundapp.di.module.data
 
 import com.soundapp.database.dao.search.SearchesDao
+import com.soundapp.database.dao.songs.SongsDao
 import com.soundapp.feature_home.data.HomeRepositoryImpl
 import com.soundapp.feature_home.domain.repository.HomeRepository
 import com.soundapp.feature_search.main.data.SearchRepositoryImpl
@@ -24,8 +25,8 @@ class RepositoryModule {
     }
 
     @Provides
-    fun provideHomeRepository(musicService: MusicService): HomeRepository {
-        return HomeRepositoryImpl(musicService)
+    fun provideHomeRepository(musicService: MusicService, songsDao: SongsDao): HomeRepository {
+        return HomeRepositoryImpl(musicService, songsDao)
     }
 
     @Provides

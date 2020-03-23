@@ -6,9 +6,10 @@ import com.abecerra.base.utils.inflate
 import com.soundapp.feature_commons.presentation.model.SongViewModel
 import com.soundapp.feature_home.R
 
-class HomeSongAdapter : BaseAdapter<HomeSongViewHolder, SongViewModel>() {
+class HomeSongAdapter(private val onItemClick: (item: SongViewModel) -> Unit) :
+    BaseAdapter<HomeSongViewHolder, SongViewModel>() {
     override fun onBindViewHolder(holder: HomeSongViewHolder, item: SongViewModel, pos: Int) {
-        holder.bind(item)
+        holder.bind(item, onItemClick)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeSongViewHolder {

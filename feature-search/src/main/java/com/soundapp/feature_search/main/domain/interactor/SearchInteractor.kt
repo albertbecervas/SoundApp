@@ -19,6 +19,4 @@ interface SearchInteractor : BaseInteractor<SearchInteractorOutput> {
     fun removeRecentSearch(text: String)
 
     fun getSearchSuggestions(): List<SearchSuggestion>
-
-    fun <T> preparePlayListFromItemSelected(item: T, list: ArrayList<T>): List<T>
 }

@@ -1,5 +1,6 @@
 package com.soundapp.feature_search
 
+import com.soundapp.feature_commons.domain.PlaylistInteractor
 import com.soundapp.feature_search.main.domain.interactor.SearchInteractor
 import com.soundapp.feature_search.main.presentation.presenter.SearchPresenterListener
 import com.soundapp.feature_search.results.presenter.SearchResultsPresenter
@@ -18,8 +19,11 @@ object SearchConfigurator {
 
     fun configureSearchResultsPresenter(
         searchPresenterListener: SearchPresenterListener,
-        searchInteractor: SearchInteractor
+        searchInteractor: SearchInteractor,
+        playlistInteractor: PlaylistInteractor
     ): SearchResultsPresenter {
-        return SearchResultsPresenterImpl(searchPresenterListener, searchInteractor)
+        return SearchResultsPresenterImpl(
+            searchPresenterListener, searchInteractor, playlistInteractor
+        )
     }
 }

@@ -9,7 +9,7 @@ object SectionViewModelMapper {
         return from.map { map(it) }
     }
 
-    private fun map(from: HomeSection): SectionViewModel {
+    fun map(from: HomeSection): SectionViewModel {
         return with(from) {
             SectionViewModel(sectionName, SongViewModelMapper.mapSongs(songs))
         }

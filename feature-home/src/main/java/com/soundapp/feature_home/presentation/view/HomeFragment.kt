@@ -13,16 +13,16 @@ class HomeFragment : BasePresenterFragment<HomePresenter>(R.layout.fragment_home
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter?.setView(this)
-
         rv_sections.layoutManager = LinearLayoutManager(context)
         rv_sections.adapter = presenter?.getSectionsAdapter()
         presenter?.getInitialSongs()
-
     }
 
     override fun showLoading() {
+        layout_loading?.visibility = View.VISIBLE
     }
 
     override fun hideLoading() {
+        layout_loading?.visibility = View.GONE
     }
 }

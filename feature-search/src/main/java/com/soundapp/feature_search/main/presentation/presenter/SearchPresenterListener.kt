@@ -7,4 +7,6 @@ interface SearchPresenterListener {
     fun onSearchResultSelected(songs: List<SongViewModel>)
 
     fun onSearchSuggestionSelected(name: String)
+
+    fun onSearchResultsReceived()
 }

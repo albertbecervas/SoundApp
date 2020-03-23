@@ -5,6 +5,8 @@ import com.soundapp.session.authentication.domain.interactor.SessionInteractor
 import com.soundapp.session.authentication.domain.interactor.SessionInteractorImpl
 import com.soundapp.session.authentication.domain.repository.SessionRepository
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.soundapp.feature_commons.domain.PlaylistInteractor
+import com.soundapp.feature_commons.domain.PlaylistInteractorImpl
 import com.soundapp.feature_home.domain.interactor.HomeInteractor
 import com.soundapp.feature_home.domain.interactor.HomeInteractorImpl
 import com.soundapp.feature_home.domain.repository.HomeRepository
@@ -19,8 +21,7 @@ class InteractorModule {
 
     @Provides
     fun provideSessionInteractor(
-        sessionRepository: SessionRepository,
-        googleSignInClient: GoogleSignInClient
+        sessionRepository: SessionRepository, googleSignInClient: GoogleSignInClient
     ): SessionInteractor {
         return SessionInteractorImpl(sessionRepository, googleSignInClient)
     }
@@ -31,7 +32,14 @@ class InteractorModule {
     }
 
     @Provides
-    fun provideSearchInteractor(repository: SearchRepository, translator: Translator): SearchInteractor {
+    fun provideSearchInteractor(
+        repository: SearchRepository, translator: Translator
+    ): SearchInteractor {
         return SearchInteractorImpl(repository, translator)
+    }
+
+    @Provides
+    fun providePlaylistInteractor(): PlaylistInteractor {
+        return PlaylistInteractorImpl()
     }
 }

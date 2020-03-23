@@ -4,5 +4,10 @@ import com.soundapp.feature_commons.domain.model.Song
 
 interface HomeRepositoryOutput {
 
-    fun onRockSongsReceived(list: List<com.soundapp.feature_commons.domain.model.Song>)
+    fun onRockSongsReceived(list: List<Song>)
+    fun onLatinoSongsReceived(list: List<Song>)
+    fun onJazzSongsReceived(list: List<Song>)
+    fun onPopSongsReceived(list: List<Song>)
+
+    fun onRecentlyPlayedSongsFound(list: List<Song>)
 }

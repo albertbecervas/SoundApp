@@ -16,7 +16,10 @@ class HomeInteractorImpl(private val homeRepository: HomeRepository) :
     }
 
     override fun getInitialSongs() {
-        homeRepository.getRockSongs()
+        homeRepository.getRockSongs(TOP_SONGS_COUNT)
+        homeRepository.getLatinoSongs(TOP_SONGS_COUNT)
+        homeRepository.getPopSongs(TOP_SONGS_COUNT)
+        homeRepository.getJazzSongs(TOP_SONGS_COUNT)
     }
 
     override fun onRockSongsReceived(list: List<Song>) {
@@ -24,8 +27,31 @@ class HomeInteractorImpl(private val homeRepository: HomeRepository) :
         notifyIfSectionsReady()
     }
 
-    private fun notifyIfSectionsReady() {
-        if (sections.size >= 1) output?.onInitialSectionsReady(sections)
+    override fun onLatinoSongsReceived(list: List<Song>) {
+        sections.add(HomeSection("Latino Top 10", list))
+        notifyIfSectionsReady()
     }
 
+    override fun onJazzSongsReceived(list: List<Song>) {
+        sections.add(HomeSection("Jazz Top 10", list))
+        notifyIfSectionsReady()
+    }
+
+    override fun onPopSongsReceived(list: List<Song>) {
+        sections.add(HomeSection("Pop Top 10", list))
+        notifyIfSectionsReady()
+    }
+
+    override fun onRecentlyPlayedSongsFound(list: List<Song>) {
+        output?.onRecentPlayedFound(HomeSection("Recently played", list))
+    }
+
+    private fun notifyIfSectionsReady() {
+        if (sections.size >= SECTIONS_NUMBER) output?.onInitialSectionsReady(sections)
+    }
+
+    companion object {
+        const val SECTIONS_NUMBER = 4
+        const val TOP_SONGS_COUNT = 10
+    }
 }

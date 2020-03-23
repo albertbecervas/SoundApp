@@ -9,6 +9,8 @@ import java.lang.ref.WeakReference
 
 class NavigatorImpl(private val context: WeakReference<Context?>?) : Navigator {
 
+    private var lastFragment: WeakReference<Fragment>? = null
+
     override fun startActivity(clazz: Class<*>) {
         context?.get()?.let {
             it.startActivity(Intent(it, clazz))
@@ -37,9 +39,22 @@ class NavigatorImpl(private val context: WeakReference<Context?>?) : Navigator {
     override fun replaceFragment(fragment: Fragment, layout: Int) {
         when (context?.get()) {
             is AppCompatActivity -> {
-                (context.get() as AppCompatActivity).supportFragmentManager.beginTransaction()
-                    .replace(layout, fragment)
-                    .commit()
+                if (fragment.isAdded) {
+                    val t =
+                        (context.get() as AppCompatActivity).supportFragmentManager.beginTransaction()
+                    lastFragment?.get()?.let {
+                        t.hide(it)
+                        t.show(fragment)
+                    }?:run {
+                        t.replace(layout, fragment)
+                    }
+                    t.commit()
+                } else {
+                    (context.get() as AppCompatActivity).supportFragmentManager.beginTransaction()
+                        .add(layout, fragment)
+                        .commit()
+                }
+                lastFragment = WeakReference(fragment)
             }
         }
     }

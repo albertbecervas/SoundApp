@@ -30,19 +30,19 @@ class SearchSuggestionsFragment :
     }
 
     private fun initViews() {
-        rv_suggestions.layoutManager = GridLayoutManager(context, SPAN_COUNT)
-        rv_suggestions.adapter = presenter?.getSearchSuggestionsAdapter()
+        rv_suggestions?.layoutManager = GridLayoutManager(context, SPAN_COUNT)
+        rv_suggestions?.adapter = presenter?.getSearchSuggestionsAdapter()
 
-        rv_recently_listened.layoutManager = LinearLayoutManager(context)
-        rv_recently_listened.adapter = presenter?.getRecentSearchesAdapter()
+        rv_recently_listened?.layoutManager = LinearLayoutManager(context)
+        rv_recently_listened?.adapter = presenter?.getRecentSearchesAdapter()
     }
 
     override fun showRecents() {
-        cl_recently_listened.visibility = View.VISIBLE
+        cl_recently_listened?.visibility = View.VISIBLE
     }
 
     override fun hideRecents() {
-        cl_recently_listened.visibility = View.GONE
+        cl_recently_listened?.visibility = View.GONE
     }
 
     companion object {

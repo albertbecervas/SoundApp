@@ -7,6 +7,7 @@ import com.abecerra.soundapp.scenes.launcher.router.LauncherRouter
 import com.abecerra.soundapp.scenes.main.presenter.MainPresenter
 import com.abecerra.soundapp.scenes.main.presenter.MainPresenterImpl
 import com.abecerra.soundapp.scenes.main.router.MainRouter
+import com.soundapp.feature_commons.domain.PlaylistInteractor
 import com.soundapp.feature_home.domain.interactor.HomeInteractor
 import com.soundapp.feature_home.presentation.presenter.HomePresenter
 import com.soundapp.feature_home.presentation.presenter.HomePresenterImpl
@@ -46,14 +47,16 @@ class PresenterModule {
     }
 
     @Provides
-    fun provideHomePresenter(router: HomeRouter, interactor: HomeInteractor): HomePresenter {
-        return HomePresenterImpl(router, interactor)
+    fun provideHomePresenter(
+        router: HomeRouter, interactor: HomeInteractor, playlistInteractor: PlaylistInteractor
+    ): HomePresenter {
+        return HomePresenterImpl(router, interactor, playlistInteractor)
     }
 
     @Provides
     fun provideSearchPresenter(
-        router: SearchRouter, interactor: SearchInteractor
+        router: SearchRouter, interactor: SearchInteractor, playlistInteractor: PlaylistInteractor
     ): SearchPresenter {
-        return SearchPresenterImpl(router, interactor)
+        return SearchPresenterImpl(router, interactor, playlistInteractor)
     }
 }

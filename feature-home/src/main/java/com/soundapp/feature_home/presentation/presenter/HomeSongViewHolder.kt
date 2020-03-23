@@ -8,8 +8,11 @@ import kotlinx.android.synthetic.main.item_home_song.view.*
 
 class HomeSongViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    fun bind(item: SongViewModel) {
+    fun bind(item: SongViewModel, onItemClick: (item: SongViewModel) -> Unit) {
         itemView.tv_song_title?.text = item.name
         Picasso.get().load(item.imageUrl).into(itemView.iv_preview)
+        itemView.setOnClickListener {
+            onItemClick(item)
+        }
     }
 }

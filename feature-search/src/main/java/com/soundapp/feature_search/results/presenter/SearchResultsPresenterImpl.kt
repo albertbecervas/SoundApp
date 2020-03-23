@@ -2,6 +2,7 @@ package com.soundapp.feature_search.results.presenter
 
 import com.abecerra.base.presentation.BasePresenterImpl
 import com.abecerra.components.filter.SortComponent
+import com.soundapp.feature_commons.domain.PlaylistInteractor
 import com.soundapp.feature_commons.domain.model.Song
 import com.soundapp.feature_commons.presentation.SongViewModelMapper
 import com.soundapp.feature_commons.presentation.model.SongViewModel
@@ -17,7 +18,8 @@ import com.soundapp.feature_search.results.view.SearchResultsView
 
 class SearchResultsPresenterImpl(
     private val searchPresenterListener: SearchPresenterListener,
-    private val searchInteractor: SearchInteractor
+    private val searchInteractor: SearchInteractor,
+    private val playlistInteractor: PlaylistInteractor
 ) : BasePresenterImpl<SearchResultsView>(), SearchResultsPresenter, SearchInteractorResultOutput {
 
     private val adapter: SearchResultsAdapter = SearchResultsAdapter {
@@ -50,6 +52,7 @@ class SearchResultsPresenterImpl(
 
     override fun onSearchSongsReceived(list: List<Song>) {
         adapter.setItems(SongViewModelMapper.mapSongs(list))
+        searchPresenterListener.onSearchResultsReceived()
         hideEmptyResults()
         getView()?.showSortComponent()
     }
@@ -83,7 +86,7 @@ class SearchResultsPresenterImpl(
     }
 
     private fun handleAdapterItemSelected(songViewModel: SongViewModel) {
-        val songsList: List<SongViewModel> = searchInteractor.preparePlayListFromItemSelected(
+        val songsList: List<SongViewModel> = playlistInteractor.preparePlayListFromItemSelected(
             songViewModel,
             adapter.getItems()
         )
