@@ -1,8 +1,7 @@
 package com.soundapp.feature_search
 
-import com.abecerra.appresources.Translator
-import com.soundapp.feature_search.main.presentation.presenter.SearchPresenterListener
 import com.soundapp.feature_search.main.domain.interactor.SearchInteractor
+import com.soundapp.feature_search.main.presentation.presenter.SearchPresenterListener
 import com.soundapp.feature_search.results.presenter.SearchResultsPresenter
 import com.soundapp.feature_search.results.presenter.SearchResultsPresenterImpl
 import com.soundapp.feature_search.suggestions.presenter.SearchSuggestionsPresenter
@@ -10,11 +9,11 @@ import com.soundapp.feature_search.suggestions.presenter.SearchSuggestionsPresen
 
 object SearchConfigurator {
 
-    fun configureSearchSuggestionsFragment(
+    fun configureSearchSuggestionsPresenter(
         searchPresenterListener: SearchPresenterListener,
-        translator: Translator
+        searchInteractor: SearchInteractor
     ): SearchSuggestionsPresenter {
-        return SearchSuggestionsPresenterImpl(searchPresenterListener, translator)
+        return SearchSuggestionsPresenterImpl(searchPresenterListener, searchInteractor)
     }
 
     fun configureSearchResultsPresenter(

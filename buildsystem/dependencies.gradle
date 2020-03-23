@@ -29,6 +29,7 @@ ext {
             appResources  : project(':app-resources'),
             components    : project(':components'),
             network       : project(':network'),
+            database      : project(':database'),
             session       : project(':session'),
             commons       : project(':feature-commons'),
             feature_home  : project(':feature-home'),

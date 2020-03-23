@@ -1,5 +1,6 @@
 package com.abecerra.soundapp.di.module.domain
 
+import com.abecerra.appresources.Translator
 import com.soundapp.session.authentication.domain.interactor.SessionInteractor
 import com.soundapp.session.authentication.domain.interactor.SessionInteractorImpl
 import com.soundapp.session.authentication.domain.repository.SessionRepository
@@ -30,9 +31,7 @@ class InteractorModule {
     }
 
     @Provides
-    fun provideSearchInteractor(repository: SearchRepository): SearchInteractor {
-        return SearchInteractorImpl(
-            repository
-        )
+    fun provideSearchInteractor(repository: SearchRepository, translator: Translator): SearchInteractor {
+        return SearchInteractorImpl(repository, translator)
     }
 }

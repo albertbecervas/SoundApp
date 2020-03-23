@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorPrimary">
+    android:background="@color/background">
 
     <ImageView
         android:id="@+id/iv_preview"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_margin="16dp"
-        android:src="@mipmap/ic_launcher"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@mipmap/ic_launcher" />
 
     <TextView
         android:id="@+id/tv_title_song"
@@ -22,29 +23,106 @@
         android:layout_marginStart="16dp"
         android:ellipsize="end"
         android:maxLines="2"
-        android:text="SONG TITLE"
-        android:layout_marginEnd="16dp"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/iv_preview"
-        app:layout_constraintTop_toTopOf="@id/iv_preview" />
+        app:layout_constraintTop_toTopOf="@id/iv_preview"
+        tools:text="SONG TITLE" />
 
     <TextView
         android:id="@+id/tv_artist"
-        android:layout_width="@dimen/constraint_layout_zero_dp"
-        android:layout_height="@dimen/constraint_layout_zero_dp"
-        android:layout_marginEnd="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:text="Pereza"
         android:textColor="@color/gray"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/iv_preview"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@+id/iv_preview"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title_song" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_song"
+        tools:text="Pereza" />
+
+    <TextView
+        android:id="@+id/tv_divider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/pipe"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_artist"
+        app:layout_constraintStart_toEndOf="@+id/tv_artist"
+        app:layout_constraintTop_toTopOf="@+id/tv_artist" />
+
+    <TextView
+        android:id="@+id/tv_album"
+        android:layout_width="@dimen/constraint_layout_zero_dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_artist"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_divider"
+        app:layout_constraintTop_toTopOf="@+id/tv_artist"
+        tools:text="Song album" />
+
+
+
+    <TextView
+        android:id="@+id/tv_price"
+        android:layout_width="@dimen/constraint_layout_zero_dp"
+        android:layout_height="25dp"
+        android:background="@color/transparent_80"
+        android:gravity="center"
+        android:textColor="@color/yellow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/iv_preview"
+        app:layout_constraintStart_toStartOf="@+id/iv_preview"
+        app:layout_constraintTop_toBottomOf="@+id/iv_preview"
+        tools:text="2.30€" />
+
+    <TextView
+        android:id="@+id/tv_genre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textColor="@color/gray"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_price"
+        app:layout_constraintStart_toEndOf="@+id/tv_price"
+        app:layout_constraintTop_toBottomOf="@+id/iv_preview"
+        tools:text="Rock" />
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textColor="@color/gray"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_price"
+        app:layout_constraintEnd_toStartOf="@+id/tv_duration"
+        app:layout_constraintStart_toEndOf="@+id/tv_genre"
+        app:layout_constraintTop_toBottomOf="@+id/iv_preview"
+        tools:text="21-10-2020" />
+
+    <TextView
+        android:id="@+id/tv_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:drawableEnd="@drawable/ic_timer"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:drawablePadding="4dp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_price"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_price"
+        tools:text="2'30''" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

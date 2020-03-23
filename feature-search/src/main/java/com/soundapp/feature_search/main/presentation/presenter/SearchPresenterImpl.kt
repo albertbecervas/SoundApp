@@ -1,6 +1,5 @@
 package com.soundapp.feature_search.main.presentation.presenter
 
-import com.abecerra.appresources.Translator
 import com.abecerra.base.presentation.BasePresenterImpl
 import com.abecerra.components.search.SearchComponent
 import com.soundapp.feature_commons.presentation.model.SongViewModel
@@ -14,8 +13,7 @@ import com.soundapp.feature_search.suggestions.view.SearchSuggestionsFragment
 
 class SearchPresenterImpl(
     private val router: SearchRouter,
-    private val translator: Translator,
-    searchInteractor: SearchInteractor
+    private val searchInteractor: SearchInteractor
 ) : BasePresenterImpl<SearchView>(), SearchPresenter, SearchPresenterListener {
 
     private var searchResultsPresenter: SearchResultsPresenter =
@@ -30,9 +28,7 @@ class SearchPresenterImpl(
     override fun getSearchSuggestionsFragment(): SearchSuggestionsFragment {
         val fragment = SearchSuggestionsFragment()
         fragment.injectPresenter(
-            SearchConfigurator.configureSearchSuggestionsFragment(
-                this, translator
-            )
+            SearchConfigurator.configureSearchSuggestionsPresenter(this, searchInteractor)
         )
         return fragment
     }

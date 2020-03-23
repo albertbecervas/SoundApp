@@ -3,6 +3,7 @@ package com.abecerra.components.search
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.LinearLayout
 import androidx.core.widget.addTextChangedListener
@@ -29,15 +30,18 @@ class SearchComponent : LinearLayout {
             imm?.hideSoftInputFromWindow(windowToken, 0)
             et_search.setText("")
         }
-        et_search.addTextChangedListener(onTextChanged = { text, _, _, count ->
-            if (text.toString().isNotEmpty()) {
-                if (count > 3) {
-                    searchComponentOutput?.onSearch(text.toString())
-                }
-                cl_cancel.visibility = View.VISIBLE
-            } else {
+        et_search.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                searchComponentOutput?.onSearch(et_search.text.toString())
+            }
+            true
+        }
+        et_search.addTextChangedListener(onTextChanged = { text, _, _, _ ->
+            if (text.toString().isBlank()) {
                 searchComponentOutput?.emptySearch()
                 cl_cancel.visibility = View.GONE
+            } else {
+                cl_cancel.visibility = View.VISIBLE
             }
         })
     }

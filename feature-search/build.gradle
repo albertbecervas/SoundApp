@@ -9,6 +9,7 @@ dependencies {
     implementation modulesDependencies.appResources
     implementation modulesDependencies.components
     implementation modulesDependencies.network
+    implementation modulesDependencies.database
     implementation modulesDependencies.commons
 
     def retrofitDependencies = rootProject.ext.retrofit

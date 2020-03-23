@@ -1,36 +1,58 @@
 package com.soundapp.feature_search.suggestions.presenter
 
-import com.abecerra.appresources.Translator
 import com.abecerra.base.presentation.BasePresenterImpl
-import com.soundapp.feature_search.R
+import com.soundapp.feature_search.main.domain.interactor.SearchInteractor
+import com.soundapp.feature_search.main.domain.interactor.SearchInteractorSuggestionsOutput
+import com.soundapp.feature_search.main.domain.model.RecentSearch
 import com.soundapp.feature_search.main.presentation.presenter.SearchPresenterListener
-import com.soundapp.feature_search.suggestions.model.SearchSuggestionViewModel
+import com.soundapp.feature_search.suggestions.view.RecentSearchesAdapter
 import com.soundapp.feature_search.suggestions.view.SearchSuggestionsAdapter
 import com.soundapp.feature_search.suggestions.view.SearchSuggestionsView
 
 class SearchSuggestionsPresenterImpl(
     private val searchPresenterListener: SearchPresenterListener,
-    private val translator: Translator
-) :
-    BasePresenterImpl<SearchSuggestionsView>(), SearchSuggestionsPresenter {
+    private val searchInteractor: SearchInteractor
+) : BasePresenterImpl<SearchSuggestionsView>(), SearchSuggestionsPresenter,
+    SearchInteractorSuggestionsOutput {
 
     private val searchSuggestionsAdapter = SearchSuggestionsAdapter {
         searchPresenterListener.onSearchSuggestionSelected(it)
     }
 
-    override fun loadSearchSuggestions() {
-        val suggestionsList = createSuggestionsList()
-        searchSuggestionsAdapter.setItems(suggestionsList)
-    }
+    private val recentSearchesAdapter = RecentSearchesAdapter({
+        searchInteractor.searchSongs(it)
+    }, {
+        deleteSearchEntry(it)
+    })
 
-    private fun createSuggestionsList(): ArrayList<SearchSuggestionViewModel> {
-        return arrayListOf(
-            SearchSuggestionViewModel(translator.getString(R.string.jazz), R.color.orange),
-            SearchSuggestionViewModel(translator.getString(R.string.rock), R.color.red),
-            SearchSuggestionViewModel(translator.getString(R.string.pop), R.color.yellow),
-            SearchSuggestionViewModel(translator.getString(R.string.latino), R.color.green)
-        )
+    init {
+        searchInteractor.setSearchSuggestionsOutput(this)
     }
 
     override fun getSearchSuggestionsAdapter(): SearchSuggestionsAdapter = searchSuggestionsAdapter
+
+    override fun getRecentSearchesAdapter(): RecentSearchesAdapter = recentSearchesAdapter
+
+    override fun loadSearchSuggestions() {
+        searchSuggestionsAdapter.setItems(searchInteractor.getSearchSuggestions())
+    }
+
+    override fun loadRecentSearches() {
+        searchInteractor.getRecentSearches()
+        getView()?.showRecents()
+    }
+
+    override fun onRecentSearchesFound(list: List<RecentSearch>) {
+        recentSearchesAdapter.setItems(list)
+    }
+
+    override fun onEmptyRecentSearches() {
+        getView()?.hideRecents()
+    }
+
+    private fun deleteSearchEntry(text: String) {
+        searchInteractor.removeRecentSearch(text)
+        recentSearchesAdapter.remove(RecentSearch(text))
+        if (recentSearchesAdapter.getItems().isEmpty()) getView()?.hideRecents()
+    }
 }

@@ -4,12 +4,12 @@ import android.view.ViewGroup
 import com.abecerra.base.presentation.BaseAdapter
 import com.abecerra.base.utils.inflate
 import com.soundapp.feature_search.R
-import com.soundapp.feature_search.suggestions.model.SearchSuggestionViewModel
+import com.soundapp.feature_search.main.domain.model.SearchSuggestion
 
 class SearchSuggestionsAdapter(private val onItemSelected: (name: String) -> Unit) :
-    BaseAdapter<SearchSuggestionsViewHolder, SearchSuggestionViewModel>() {
+    BaseAdapter<SearchSuggestionsViewHolder, SearchSuggestion>() {
     override fun onBindViewHolder(
-        holder: SearchSuggestionsViewHolder, item: SearchSuggestionViewModel, pos: Int
+        holder: SearchSuggestionsViewHolder, item: SearchSuggestion, pos: Int
     ) {
         holder.bind(item, onItemSelected)
     }

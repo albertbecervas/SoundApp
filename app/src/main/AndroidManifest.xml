@@ -15,6 +15,7 @@
 
         <activity
             android:name=".scenes.launcher.view.LauncherActivity"
+            android:screenOrientation="fullSensor"
             android:theme="@style/FullScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,11 +25,14 @@
         </activity>
         <activity
             android:name=".scenes.main.view.MainActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/FullScreenTheme"
             android:windowSoftInputMode="adjustPan|adjustResize" />
         <activity
             android:name=".scenes.player.SongPlayerActivity"
             android:launchMode="singleTask"
-            android:parentActivityName=".scenes.main.view.MainActivity" />
+            android:parentActivityName=".scenes.main.view.MainActivity"
+            android:screenOrientation="fullSensor" />
     </application>
 
 </manifest>

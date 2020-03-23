@@ -7,4 +7,12 @@
     <string name="rock">rock</string>
     <string name="jazz">jazz</string>
     <string name="latino">latino</string>
+    <string name="here_are_some_suggestions">Here are some suggestions</string>
+    <string name="recent_searches">Recent searches</string>
+    <string name="no_results_found">No results found</string>
+    <string name="search_hint">Search songs, artists, albums, genres...</string>
+    <string name="pipe">|</string>
+    <string name="sort_by_price">Sort by price</string>
+    <string name="sort_by_duration">Sort by duration</string>
+    <string name="sort_by_genre">Sort by genre</string>
 </resources>

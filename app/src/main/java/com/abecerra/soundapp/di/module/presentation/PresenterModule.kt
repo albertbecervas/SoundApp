@@ -52,8 +52,8 @@ class PresenterModule {
 
     @Provides
     fun provideSearchPresenter(
-        router: SearchRouter, interactor: SearchInteractor, translator: Translator
+        router: SearchRouter, interactor: SearchInteractor
     ): SearchPresenter {
-        return SearchPresenterImpl(router, translator, interactor)
+        return SearchPresenterImpl(router, interactor)
     }
 }

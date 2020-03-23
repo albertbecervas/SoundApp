@@ -2,12 +2,14 @@ package com.abecerra.soundapp.scenes.main.view
 
 import android.os.Bundle
 import com.abecerra.base.presentation.BaseActivity
+import com.abecerra.base.utils.StringUtils
 import com.abecerra.soundapp.R
 import com.abecerra.soundapp.di.component.DaggerViewComponent
 import com.abecerra.soundapp.di.module.presentation.ViewModule
 import com.abecerra.soundapp.scenes.main.presenter.MainPresenter
 import com.soundapp.session.authentication.domain.interactor.SessionInteractor
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.view_toolbar.*
 import javax.inject.Inject
 
 class MainActivity : BaseActivity(), MainView {
@@ -25,7 +27,13 @@ class MainActivity : BaseActivity(), MainView {
         DaggerViewComponent.builder().viewModule(ViewModule(this))
             .build().inject(this)
 
+        initToolbar()
         presenter.setView(this)
         presenter.setBottomNavigationComponent(bottom_navigation)
+    }
+
+    private fun initToolbar() {
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = StringUtils.EMPTY_STRING
     }
 }

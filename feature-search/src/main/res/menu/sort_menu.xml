@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_price"
+        android:icon="@drawable/ic_timer"
+        android:title="Sort by price" />
+
+    <item
+        android:id="@+id/menu_time"
+        android:icon="@drawable/ic_timer"
+        android:title="Sort by time" />
+
+    <item
+        android:id="@+id/menu_genre"
+        android:icon="@drawable/ic_timer"
+        android:title="Sort by genre" />
+</menu>
