@@ -40,11 +40,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            tools:text="0:30"
             android:textColor="@color/gray"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/exo_progress"
-            app:layout_constraintTop_toBottomOf="@id/exo_progress" />
+            app:layout_constraintTop_toBottomOf="@id/exo_progress"
+            tools:text="0:30" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -54,8 +54,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cl_progress">
+        app:layout_constraintTop_toBottomOf="@id/cl_progress"
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_play_pause"
@@ -107,6 +109,26 @@
             android:src="@drawable/ic_previous"
             app:layout_constraintBottom_toBottomOf="@+id/cl_play_pause"
             app:layout_constraintEnd_toStartOf="@+id/cl_play_pause"
+            app:layout_constraintTop_toTopOf="@+id/cl_play_pause" />
+
+        <ImageView
+            android:id="@+id/exo_shuffle"
+            android:layout_width="@dimen/side_controls_size"
+            android:layout_height="@dimen/side_controls_size"
+            android:src="@drawable/exo_icon_shuffle_on"
+            app:layout_constraintBottom_toBottomOf="@+id/cl_play_pause"
+            app:layout_constraintEnd_toStartOf="@+id/exo_prev"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/cl_play_pause" />
+
+        <ImageView
+            android:id="@+id/iv_share"
+            android:layout_width="@dimen/side_controls_size"
+            android:layout_height="@dimen/side_controls_size"
+            android:src="@drawable/ic_share"
+            app:layout_constraintBottom_toBottomOf="@+id/cl_play_pause"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/exo_next"
             app:layout_constraintTop_toTopOf="@+id/cl_play_pause" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

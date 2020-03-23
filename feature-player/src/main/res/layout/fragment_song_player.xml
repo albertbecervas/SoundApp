@@ -11,7 +11,7 @@
         android:id="@+id/iv_song_preview"
         android:layout_width="@dimen/constraint_layout_zero_dp"
         android:layout_height="@dimen/constraint_layout_zero_dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="70dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.5"
         app:layout_constraintHorizontal_bias="0.5"
@@ -24,6 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_song_preview">
 
@@ -62,6 +63,7 @@
         android:layout_height="@dimen/constraint_layout_zero_dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cl_song_title"
-        app:show_timeout="0" />
+        app:show_timeout="0"
+        app:show_shuffle_button="true"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

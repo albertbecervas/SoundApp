@@ -30,7 +30,7 @@ object SongDtoMapper {
                 previewUrl.toString(),
                 artworkUrl30.toString(),
                 artworkUrl60.toString(),
-                artworkUrl100.toString(),
+                artworkUrl100.toString().changeImageSize(),
                 collectionPrice.toDouble(),
                 trackPrice.toDouble(),
                 releaseDate.toString(),
@@ -47,5 +47,9 @@ object SongDtoMapper {
                 isStreamable.toBoolean()
             )
         }
+    }
+
+    private fun String.changeImageSize(): String {
+        return this.replace("100x100bb", "500x500bb")
     }
 }
