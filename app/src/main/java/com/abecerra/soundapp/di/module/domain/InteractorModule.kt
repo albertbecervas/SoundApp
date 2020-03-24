@@ -27,8 +27,8 @@ class InteractorModule {
     }
 
     @Provides
-    fun provideHomeInteractor(repository: HomeRepository): HomeInteractor {
-        return HomeInteractorImpl(repository)
+    fun provideHomeInteractor(repository: HomeRepository, translator: Translator): HomeInteractor {
+        return HomeInteractorImpl(repository, translator)
     }
 
     @Provides

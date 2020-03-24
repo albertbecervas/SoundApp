@@ -7,16 +7,26 @@ import com.google.android.exoplayer2.analytics.AnalyticsListener
 import com.soundapp.feature_commons.presentation.SongViewModelMapper
 import com.soundapp.feature_commons.presentation.model.SongViewModel
 import com.soundapp.feature_player.domain.interactor.SongPlayerInteractor
+import com.soundapp.feature_player.presentation.router.SongPlayerRouter
 import com.soundapp.feature_player.presentation.view.SongPlayerView
 
 class SongPlayerPresenterImpl(
-    private val exoPlayer: SimpleExoPlayer, private val interactor: SongPlayerInteractor
+    private val router: SongPlayerRouter, private val exoPlayer: SimpleExoPlayer,
+    private val interactor: SongPlayerInteractor
 ) : BasePresenterImpl<SongPlayerView>(), SongPlayerPresenter {
 
     override fun initPlayer(): SimpleExoPlayer? {
         setListenerForPlayerReady()
         setListenerForSongChanged()
         return exoPlayer
+    }
+
+    override fun onShareClicked() {
+        getCurrentSong()?.let { router.shareSong(interactor.getShareText(it)) }
+    }
+
+    override fun onViewDestroyed() {
+        exoPlayer.release()
     }
 
     private fun setListenerForSongChanged() {
@@ -43,14 +53,12 @@ class SongPlayerPresenterImpl(
         })
     }
 
-    override fun onViewDestroyed() {
-        exoPlayer.release()
-    }
-
     private fun updateSongData() {
-        (exoPlayer.currentTag as? SongViewModel)?.let {
+        getCurrentSong()?.let {
             getView()?.songDataUpdated(it)
             interactor.saveCurrentPlayingSong(SongViewModelMapper.mapSongViewModel(it))
         }
     }
+
+    private fun getCurrentSong(): SongViewModel? = exoPlayer.currentTag as? SongViewModel
 }

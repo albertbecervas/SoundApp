@@ -7,6 +7,7 @@ import com.soundapp.feature_commons.presentation.model.SongViewModel
 import com.soundapp.feature_player.R
 import com.soundapp.feature_player.presentation.presenter.SongPlayerPresenter
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.exo_player_control_view.*
 import kotlinx.android.synthetic.main.fragment_song_player.*
 
 
@@ -16,11 +17,12 @@ class SongPlayerFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter?.setView(this)
+        initViews()
     }
 
-    override fun onResume() {
-        super.onResume()
+    private fun initViews() {
         player_view?.player = presenter?.initPlayer()
+        iv_share.setOnClickListener { presenter?.onShareClicked() }
     }
 
     override fun songDataUpdated(songViewModel: SongViewModel) {

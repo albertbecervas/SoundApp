@@ -2,6 +2,7 @@ package com.abecerra.soundapp.di.module.presentation
 
 import android.content.Context
 import android.net.Uri
+import com.abecerra.soundapp.navigation.navigator.Navigator
 import com.abecerra.soundapp.navigation.routers.SongPlayerRouterImpl
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.source.ConcatenatingMediaSource
@@ -93,15 +94,17 @@ class MediaPlayerModule(private val context: Context, private val songList: List
     }
 
     @Provides
-    fun provideSongPlayerRouter(context: Context): SongPlayerRouter {
-        return SongPlayerRouterImpl(context, songList)
+    fun provideSongPlayerRouter(context: Context, navigator: Navigator): SongPlayerRouter {
+        return SongPlayerRouterImpl(navigator, context, songList)
     }
 
     @Provides
     fun provideSongPlayerPresenter(
-        simpleExoPlayer: SimpleExoPlayer, interactor: SongPlayerInteractor
+        songPlayerRouter: SongPlayerRouter,
+        simpleExoPlayer: SimpleExoPlayer,
+        interactor: SongPlayerInteractor
     ): SongPlayerPresenter {
-        return SongPlayerPresenterImpl(simpleExoPlayer, interactor)
+        return SongPlayerPresenterImpl(songPlayerRouter, simpleExoPlayer, interactor)
     }
 
     @Provides

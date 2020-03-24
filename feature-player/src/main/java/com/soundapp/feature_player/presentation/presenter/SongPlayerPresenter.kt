@@ -7,5 +7,8 @@ import com.soundapp.feature_player.presentation.view.SongPlayerView
 interface SongPlayerPresenter : BasePresenter<SongPlayerView> {
 
     fun initPlayer(): SimpleExoPlayer?
+
+    fun onShareClicked()
+
     fun onViewDestroyed()
 }

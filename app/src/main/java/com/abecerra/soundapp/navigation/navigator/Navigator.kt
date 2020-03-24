@@ -15,4 +15,6 @@ interface Navigator {
     fun startActivityForResult(intent: Intent, resultCode: Int, fragment: Fragment)
 
     fun replaceFragment(fragment: Fragment, layout: Int)
+
+    fun share(text: String)
 }

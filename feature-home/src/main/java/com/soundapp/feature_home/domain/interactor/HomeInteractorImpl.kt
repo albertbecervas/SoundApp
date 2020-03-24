@@ -1,14 +1,18 @@
 package com.soundapp.feature_home.domain.interactor
 
+import com.abecerra.appresources.Translator
 import com.abecerra.base.domain.BaseInteractorImpl
 import com.soundapp.feature_commons.domain.model.SavedSong
 import com.soundapp.feature_commons.domain.model.Song
+import com.soundapp.feature_home.R
 import com.soundapp.feature_home.domain.model.HomeSection
 import com.soundapp.feature_home.domain.repository.HomeRepository
 import com.soundapp.feature_home.domain.repository.HomeRepositoryOutput
 
-class HomeInteractorImpl(private val homeRepository: HomeRepository) :
-    BaseInteractorImpl<HomeInteractorOutput>(), HomeInteractor, HomeRepositoryOutput {
+class HomeInteractorImpl(
+    private val homeRepository: HomeRepository,
+    private val translator: Translator
+) : BaseInteractorImpl<HomeInteractorOutput>(), HomeInteractor, HomeRepositoryOutput {
 
     private val sections = arrayListOf<HomeSection>()
 
@@ -48,7 +52,7 @@ class HomeInteractorImpl(private val homeRepository: HomeRepository) :
     }
 
     override fun onRecentlyPlayedSongsFound(list: List<SavedSong>) {
-        output?.onRecentPlayedFound(list)
+        output?.onRecentPlayedFound(translator.getString(R.string.recently_played), list)
     }
 
     private fun notifyIfSectionsReady() {

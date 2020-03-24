@@ -5,7 +5,7 @@ import com.soundapp.feature_home.domain.model.HomeSection
 
 interface HomeInteractorOutput {
 
-    fun onRecentPlayedFound(list: List<SavedSong>)
+    fun onRecentPlayedFound(sectionName: String, list: List<SavedSong>)
 
     fun onInitialSectionsReady(list: List<HomeSection>)
 }

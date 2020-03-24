@@ -45,7 +45,7 @@ class NavigatorImpl(private val context: WeakReference<Context?>?) : Navigator {
                     lastFragment?.get()?.let {
                         t.hide(it)
                         t.show(fragment)
-                    }?:run {
+                    } ?: run {
                         t.replace(layout, fragment)
                     }
                     t.commit()
@@ -57,5 +57,19 @@ class NavigatorImpl(private val context: WeakReference<Context?>?) : Navigator {
                 lastFragment = WeakReference(fragment)
             }
         }
+    }
+
+    override fun share(text: String) {
+        val sendIntent: Intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, text)
+            type = TEXT_PLAIN
+        }
+        val shareIntent = Intent.createChooser(sendIntent, null)
+        context?.get()?.startActivity(shareIntent)
+    }
+
+    companion object {
+        const val TEXT_PLAIN = "text/plain"
     }
 }
