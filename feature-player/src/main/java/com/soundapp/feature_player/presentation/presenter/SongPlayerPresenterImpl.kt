@@ -4,12 +4,13 @@ import com.abecerra.base.presentation.BasePresenterImpl
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.analytics.AnalyticsListener
-import com.google.android.exoplayer2.audio.AudioListener
+import com.soundapp.feature_commons.presentation.SongViewModelMapper
 import com.soundapp.feature_commons.presentation.model.SongViewModel
+import com.soundapp.feature_player.domain.interactor.SongPlayerInteractor
 import com.soundapp.feature_player.presentation.view.SongPlayerView
 
 class SongPlayerPresenterImpl(
-    private val exoPlayer: SimpleExoPlayer
+    private val exoPlayer: SimpleExoPlayer, private val interactor: SongPlayerInteractor
 ) : BasePresenterImpl<SongPlayerView>(), SongPlayerPresenter {
 
     override fun initPlayer(): SimpleExoPlayer? {
@@ -49,6 +50,7 @@ class SongPlayerPresenterImpl(
     private fun updateSongData() {
         (exoPlayer.currentTag as? SongViewModel)?.let {
             getView()?.songDataUpdated(it)
+            interactor.saveCurrentPlayingSong(SongViewModelMapper.mapSongViewModel(it))
         }
     }
 }

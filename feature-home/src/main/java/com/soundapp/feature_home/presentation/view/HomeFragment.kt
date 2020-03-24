@@ -18,6 +18,11 @@ class HomeFragment : BasePresenterFragment<HomePresenter>(R.layout.fragment_home
         presenter?.getInitialSongs()
     }
 
+    override fun onResume() {
+        super.onResume()
+        presenter?.getRecentSongs()
+    }
+
     override fun showLoading() {
         layout_loading?.visibility = View.VISIBLE
     }

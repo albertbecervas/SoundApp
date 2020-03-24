@@ -1,5 +1,6 @@
 package com.soundapp.feature_commons.data
 
+import com.soundapp.feature_commons.domain.model.Song
 import com.soundapp.network.dto.SongDto
 import com.soundapp.network.utils.toBoolean
 import com.soundapp.network.utils.toDouble
@@ -8,7 +9,7 @@ import com.soundapp.network.utils.toString
 
 object SongDtoMapper {
 
-    fun mapToSong(from: List<SongDto>): List<com.soundapp.feature_commons.domain.model.Song> {
+    fun mapToSong(from: List<SongDto>): List<Song> {
         return from.map {
             mapToSong(
                 it
@@ -16,9 +17,9 @@ object SongDtoMapper {
         }
     }
 
-    private fun mapToSong(from: SongDto): com.soundapp.feature_commons.domain.model.Song {
+    private fun mapToSong(from: SongDto): Song {
         return with(from) {
-            com.soundapp.feature_commons.domain.model.Song(
+            Song(
                 wrapperType.toString(),
                 trackId.toString(),
                 artistName.toString(),

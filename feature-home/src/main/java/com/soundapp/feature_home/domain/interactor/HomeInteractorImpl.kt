@@ -1,6 +1,7 @@
 package com.soundapp.feature_home.domain.interactor
 
 import com.abecerra.base.domain.BaseInteractorImpl
+import com.soundapp.feature_commons.domain.model.SavedSong
 import com.soundapp.feature_commons.domain.model.Song
 import com.soundapp.feature_home.domain.model.HomeSection
 import com.soundapp.feature_home.domain.repository.HomeRepository
@@ -13,6 +14,10 @@ class HomeInteractorImpl(private val homeRepository: HomeRepository) :
 
     init {
         homeRepository.setRepositoryOutput(this)
+    }
+
+    override fun getRecentSongs() {
+        homeRepository.getRecentlyPlayedSongs()
     }
 
     override fun getInitialSongs() {
@@ -42,8 +47,8 @@ class HomeInteractorImpl(private val homeRepository: HomeRepository) :
         notifyIfSectionsReady()
     }
 
-    override fun onRecentlyPlayedSongsFound(list: List<Song>) {
-        output?.onRecentPlayedFound(HomeSection("Recently played", list))
+    override fun onRecentlyPlayedSongsFound(list: List<SavedSong>) {
+        output?.onRecentPlayedFound(list)
     }
 
     private fun notifyIfSectionsReady() {

@@ -1,10 +1,10 @@
 package com.soundapp.database.dao.songs
 
-import com.soundapp.database.entities.SongEntity
+import com.soundapp.database.entities.SavedSongEntity
 
 interface SongsDao {
 
-    fun addRecentlyPlayedSong(songEntity: SongEntity)
+    fun addRecentlyPlayedSong(songEntity: SavedSongEntity)
 
-    fun getRecentlyPlayed(success: (List<SongEntity>) -> Unit)
+    fun getRecentlyPlayed(success: (List<SavedSongEntity>) -> Unit)
 }

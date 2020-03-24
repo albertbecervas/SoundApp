@@ -1,5 +1,6 @@
 package com.soundapp.feature_home.domain.repository
 
+import com.soundapp.feature_commons.domain.model.SavedSong
 import com.soundapp.feature_commons.domain.model.Song
 
 interface HomeRepositoryOutput {
@@ -9,5 +10,5 @@ interface HomeRepositoryOutput {
     fun onJazzSongsReceived(list: List<Song>)
     fun onPopSongsReceived(list: List<Song>)
 
-    fun onRecentlyPlayedSongsFound(list: List<Song>)
+    fun onRecentlyPlayedSongsFound(list: List<SavedSong>)
 }

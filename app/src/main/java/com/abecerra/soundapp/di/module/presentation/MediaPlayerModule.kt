@@ -10,8 +10,13 @@ import com.google.android.exoplayer2.ui.PlayerNotificationManager
 import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
+import com.soundapp.database.dao.songs.SongsDao
 import com.soundapp.feature_commons.presentation.model.SongViewModel
 import com.soundapp.feature_player.R
+import com.soundapp.feature_player.data.SongPlayerRepositoryImpl
+import com.soundapp.feature_player.domain.interactor.SongPlayerInteractor
+import com.soundapp.feature_player.domain.interactor.SongPlayerInteractorImpl
+import com.soundapp.feature_player.domain.repository.SongPlayerRepository
 import com.soundapp.feature_player.presentation.notification.SongPlayerNotificationAdapter
 import com.soundapp.feature_player.presentation.notification.SongPlayerNotificationBuilder
 import com.soundapp.feature_player.presentation.presenter.SongPlayerPresenter
@@ -78,13 +83,25 @@ class MediaPlayerModule(private val context: Context, private val songList: List
     }
 
     @Provides
+    fun provideSongPlayerRepository(songsDao: SongsDao): SongPlayerRepository {
+        return SongPlayerRepositoryImpl(songsDao)
+    }
+
+    @Provides
+    fun provideSongPlayerInteractor(repository: SongPlayerRepository): SongPlayerInteractor {
+        return SongPlayerInteractorImpl(repository)
+    }
+
+    @Provides
     fun provideSongPlayerRouter(context: Context): SongPlayerRouter {
         return SongPlayerRouterImpl(context, songList)
     }
 
     @Provides
-    fun provideSongPlayerPresenter(simpleExoPlayer: SimpleExoPlayer): SongPlayerPresenter {
-        return SongPlayerPresenterImpl(simpleExoPlayer)
+    fun provideSongPlayerPresenter(
+        simpleExoPlayer: SimpleExoPlayer, interactor: SongPlayerInteractor
+    ): SongPlayerPresenter {
+        return SongPlayerPresenterImpl(simpleExoPlayer, interactor)
     }
 
     @Provides

@@ -4,5 +4,7 @@ import com.abecerra.base.domain.BaseInteractor
 
 interface HomeInteractor : BaseInteractor<HomeInteractorOutput> {
 
+    fun getRecentSongs()
+
     fun getInitialSongs()
 }

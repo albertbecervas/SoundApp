@@ -1,5 +1,6 @@
 package com.soundapp.feature_home.data
 
+import android.os.Handler
 import com.abecerra.base.data.BaseRepositoryImpl
 import com.soundapp.database.dao.songs.SongsDao
 import com.soundapp.feature_commons.data.SongDtoMapper
@@ -59,8 +60,14 @@ class HomeRepositoryImpl(private val musicService: MusicService, private val son
     }
 
     override fun getRecentlyPlayedSongs() {
-        songsDao.getRecentlyPlayed {
-            output?.onRecentlyPlayedSongsFound(SongEntityMapper.mapToSong(it))
+        Handler().run {
+
+        }
+
+        Thread().run {
+            songsDao.getRecentlyPlayed {
+                output?.onRecentlyPlayedSongsFound(SongEntityMapper.mapToSong(it))
+            }
         }
     }
 

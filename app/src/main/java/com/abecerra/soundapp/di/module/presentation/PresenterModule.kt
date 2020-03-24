@@ -48,9 +48,10 @@ class PresenterModule {
 
     @Provides
     fun provideHomePresenter(
-        router: HomeRouter, interactor: HomeInteractor, playlistInteractor: PlaylistInteractor
+        router: HomeRouter, interactor: HomeInteractor, playlistInteractor: PlaylistInteractor,
+        translator: Translator
     ): HomePresenter {
-        return HomePresenterImpl(router, interactor, playlistInteractor)
+        return HomePresenterImpl(router, interactor, playlistInteractor, translator)
     }
 
     @Provides
