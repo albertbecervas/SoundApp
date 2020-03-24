@@ -14,7 +14,7 @@ class SongsDaoImpl(private val realm: Realm) : SongsDao {
     override fun getRecentlyPlayed(success: (List<SavedSongEntity>) -> Unit) {
         realm.executeTransaction {
             val list: List<SavedSongEntity> =
-                it.where(SavedSongEntity::class.java).findAll()
+                it.where(SavedSongEntity::class.java).findAll().reversed()
             success(list)
         }
     }

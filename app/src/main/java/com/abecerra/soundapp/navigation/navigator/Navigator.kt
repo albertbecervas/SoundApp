@@ -14,6 +14,8 @@ interface Navigator {
 
     fun startActivityForResult(intent: Intent, resultCode: Int, fragment: Fragment)
 
+    fun startActivityWithUpAnimation(clazz: Class<*>, extras: Bundle)
+
     fun replaceFragment(fragment: Fragment, layout: Int)
 
     fun share(text: String)

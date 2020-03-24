@@ -3,7 +3,11 @@ package com.abecerra.soundapp.di.module.presentation
 import android.content.Context
 import android.net.Uri
 import com.abecerra.soundapp.navigation.navigator.Navigator
+import com.abecerra.soundapp.navigation.routers.SongPlayerActivityRouterImpl
 import com.abecerra.soundapp.navigation.routers.SongPlayerRouterImpl
+import com.abecerra.soundapp.scenes.player.presenter.SongPlayerActivityPresenter
+import com.abecerra.soundapp.scenes.player.presenter.SongPlayerActivityPresenterImpl
+import com.abecerra.soundapp.scenes.player.router.SongPlayerActivityRouter
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.source.ConcatenatingMediaSource
 import com.google.android.exoplayer2.source.ProgressiveMediaSource
@@ -112,5 +116,17 @@ class MediaPlayerModule(private val context: Context, private val songList: List
         val songPlayerFragment = SongPlayerFragment()
         songPlayerFragment.injectPresenter(presenter)
         return songPlayerFragment
+    }
+
+    @Provides
+    fun provideSongPlayerActivityRouter(
+        navigator: Navigator, songPlayerFragment: SongPlayerFragment
+    ): SongPlayerActivityRouter {
+        return SongPlayerActivityRouterImpl(navigator, songPlayerFragment)
+    }
+
+    @Provides
+    fun provideSongPlayerActivityPresenter(songPlayerActivityRouter: SongPlayerActivityRouter): SongPlayerActivityPresenter {
+        return SongPlayerActivityPresenterImpl(songPlayerActivityRouter)
     }
 }

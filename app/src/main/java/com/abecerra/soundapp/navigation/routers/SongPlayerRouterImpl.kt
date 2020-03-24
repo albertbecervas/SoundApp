@@ -6,7 +6,7 @@ import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import androidx.core.app.TaskStackBuilder
 import com.abecerra.soundapp.navigation.navigator.Navigator
-import com.abecerra.soundapp.scenes.player.SongPlayerActivity
+import com.abecerra.soundapp.scenes.player.view.SongPlayerActivity
 import com.soundapp.feature_commons.presentation.model.SongViewModel
 import com.soundapp.feature_player.presentation.router.SongPlayerRouter
 

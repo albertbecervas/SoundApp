@@ -4,11 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".scenes.player.SongPlayerActivity">
+    tools:context=".scenes.player.view.SongPlayerActivity">
+
+    <include
+        android:id="@+id/layout_toolbar"
+        layout="@layout/view_player_toolbar" />
 
     <FrameLayout
         android:id="@+id/fl_player"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="@dimen/constraint_layout_zero_dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_toolbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

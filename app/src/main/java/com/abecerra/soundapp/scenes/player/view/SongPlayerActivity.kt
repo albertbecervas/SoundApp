@@ -1,18 +1,21 @@
-package com.abecerra.soundapp.scenes.player
+package com.abecerra.soundapp.scenes.player.view
 
 import android.os.Bundle
+import android.view.MenuItem
 import com.abecerra.base.presentation.BaseActivity
+import com.abecerra.base.utils.StringUtils
 import com.abecerra.soundapp.R
 import com.abecerra.soundapp.di.component.DaggerPlayerComponent
 import com.abecerra.soundapp.di.module.presentation.MediaPlayerModule
+import com.abecerra.soundapp.scenes.player.presenter.SongPlayerActivityPresenter
 import com.soundapp.feature_commons.presentation.model.SongViewModel
-import com.soundapp.feature_player.presentation.view.SongPlayerFragment
+import kotlinx.android.synthetic.main.view_player_toolbar.*
 import javax.inject.Inject
 
-class SongPlayerActivity : BaseActivity() {
+class SongPlayerActivity : BaseActivity(), SongPlayerActivityView {
 
     @Inject
-    lateinit var fragment: SongPlayerFragment
+    lateinit var presenter: SongPlayerActivityPresenter
 
     override fun getLayout(): Int = R.layout.activity_song_player
 
@@ -22,7 +25,22 @@ class SongPlayerActivity : BaseActivity() {
             MediaPlayerModule(this, getSongsFromArguments(intent.extras))
         ).build().inject(this)
 
-        supportFragmentManager.beginTransaction().replace(R.id.fl_player, fragment).commit()
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = StringUtils.EMPTY_STRING
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_close_arrow)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        presenter.setView(this)
+        presenter.loadSongPlayerFragment()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        onBackPressed()
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        overridePendingTransition(0, R.anim.slide_out_down)
     }
 
     companion object {
