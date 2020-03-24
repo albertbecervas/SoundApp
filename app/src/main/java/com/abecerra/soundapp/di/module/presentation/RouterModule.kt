@@ -6,10 +6,14 @@ import com.abecerra.soundapp.scenes.launcher.router.LauncherRouter
 import com.abecerra.soundapp.scenes.main.router.MainRouter
 import com.soundapp.feature_home.presentation.router.HomeRouter
 import com.soundapp.feature_home.presentation.view.HomeFragment
+import com.soundapp.feature_profile.router.ProfileDialogRouter
+import com.soundapp.feature_profile.view.ProfileDialogFragment
 import com.soundapp.feature_search.main.presentation.router.SearchRouter
 import com.soundapp.feature_search.main.presentation.view.SearchFragment
 import com.soundapp.session.login.router.LoginRouter
 import com.soundapp.session.login.view.LoginFragment
+import com.soundapp.session.signup.router.SignUpRouter
+import com.soundapp.session.signup.view.SignUpFragment
 import dagger.Module
 import dagger.Provides
 
@@ -25,14 +29,20 @@ class RouterModule {
     fun provideMainRouter(
         navigator: Navigator,
         homeFragment: HomeFragment,
-        searchFragment: SearchFragment
+        searchFragment: SearchFragment,
+        profileFragment: ProfileDialogFragment
     ): MainRouter {
-        return MainRouterImpl(navigator, homeFragment, searchFragment)
+        return MainRouterImpl(navigator, homeFragment, searchFragment, profileFragment)
     }
 
     @Provides
-    fun provideLoginRouter(navigator: Navigator): LoginRouter {
-        return LoginRouterImpl(navigator)
+    fun provideLoginRouter(navigator: Navigator, signUpFragment: SignUpFragment): LoginRouter {
+        return LoginRouterImpl(navigator, signUpFragment)
+    }
+
+    @Provides
+    fun provideSignUpRouter(navigator: Navigator): SignUpRouter {
+        return SignUpRouterImpl(navigator)
     }
 
     @Provides
@@ -45,5 +55,10 @@ class RouterModule {
         navigator: Navigator
     ): SearchRouter {
         return SearchRouterImpl(navigator)
+    }
+
+    @Provides
+    fun provideProfileRouter(navigator: Navigator): ProfileDialogRouter {
+        return ProfileDialogRouterImpl(navigator)
     }
 }

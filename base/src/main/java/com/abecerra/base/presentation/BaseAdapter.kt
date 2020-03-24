@@ -14,6 +14,8 @@ abstract class BaseAdapter<K : RecyclerView.ViewHolder, L> : RecyclerView.Adapte
 
     override fun getItemCount(): Int = mItems.size
 
+    protected fun isLastItem(pos: Int) = getItems().size - 1 == pos
+
     fun getItems() = mItems
 
     fun setItems(items: List<L>) {

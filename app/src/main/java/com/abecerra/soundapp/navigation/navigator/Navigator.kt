@@ -3,6 +3,7 @@ package com.abecerra.soundapp.navigation.navigator
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 interface Navigator {
 
@@ -18,5 +19,13 @@ interface Navigator {
 
     fun replaceFragment(fragment: Fragment, layout: Int)
 
+    fun replaceFragmentAndAddToBackStack(fragment: Fragment, layout: Int)
+
+    fun showBottomSheetFragment(fragment: BottomSheetDialogFragment)
+
     fun share(text: String)
+
+    fun sendEmail(text: String)
+
+    fun openUrl(text: String)
 }

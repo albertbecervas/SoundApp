@@ -14,14 +14,15 @@ import com.soundapp.session.authentication.data.SessionRepositoryImpl
 import com.soundapp.session.authentication.domain.interactor.SessionInteractor
 import com.soundapp.session.authentication.domain.interactor.SessionInteractorImpl
 import com.soundapp.session.authentication.domain.repository.SessionRepository
-import com.soundapp.session.login.presenter.LoginPresenter
-import com.soundapp.session.login.presenter.LoginPresenterImpl
-import com.soundapp.session.login.router.LoginRouter
+import com.soundapp.session.signup.presenter.SignUpPresenter
+import com.soundapp.session.signup.presenter.SignUpPresenterImpl
+import com.soundapp.session.signup.router.SignUpRouter
 import com.soundapp.session.user.data.UserDataSource
 import com.soundapp.session.utils.EditTextViewMatcher.isErrorShown
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.whenever
+import com.soundapp.session.signup.view.SignUpFragment
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -43,11 +44,11 @@ class LoginFragmentTest {
     private lateinit var googleSignInClient: GoogleSignInClient
 
     @Mock
-    private lateinit var loginRouter: LoginRouter
+    private lateinit var loginRouter: SignUpRouter
 
     private lateinit var sessionRepository: SessionRepository
     private lateinit var sessionInteractor: SessionInteractor
-    private lateinit var loginPresenter: LoginPresenter
+    private lateinit var loginPresenter: SignUpPresenter
 
     private val testUsername = "testUsername"
     private val testPassword = "testPassword"
@@ -59,8 +60,8 @@ class LoginFragmentTest {
 
         sessionRepository = SessionRepositoryImpl(authService, userDataSource)
         sessionInteractor = SessionInteractorImpl(sessionRepository, googleSignInClient)
-        loginPresenter = LoginPresenterImpl(loginRouter, sessionInteractor)
-        launchFragmentInContainer<LoginFragment>(factory = LoginFragmentFactory(loginPresenter))
+        loginPresenter = SignUpPresenterImpl(loginRouter, sessionInteractor)
+        launchFragmentInContainer<SignUpFragment>(factory = LoginFragmentFactory(loginPresenter))
     }
 
     @Test

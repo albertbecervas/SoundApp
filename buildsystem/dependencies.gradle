@@ -9,7 +9,8 @@ ext {
             multidex               : "androidx.multidex:multidex:$multidexVersion",
             constraintLayout       : "androidx.constraintlayout:constraintlayout:$androidx.constraintLayout",
             recyclerView           : "androidx.recyclerview:recyclerview:$androidx.recyclerView",
-            cardView               : "androidx.cardview:cardview:$androidx.cardView"
+            cardView               : "androidx.cardview:cardview:$androidx.cardView",
+            material               : "com.google.android.material:material:$androidx.material"
     ]
 
     google = [
@@ -25,16 +26,17 @@ ext {
     ]
 
     modules = [
-            base          : project(':base'),
-            appResources  : project(':app-resources'),
-            components    : project(':components'),
-            network       : project(':network'),
-            database      : project(':database'),
-            session       : project(':session'),
-            commons       : project(':feature-commons'),
-            feature_home  : project(':feature-home'),
-            feature_search: project(':feature-search'),
-            feature_player: project(':feature-player'),
+            base           : project(':base'),
+            appResources   : project(':app-resources'),
+            components     : project(':components'),
+            network        : project(':network'),
+            database       : project(':database'),
+            session        : project(':session'),
+            commons        : project(':feature-commons'),
+            feature_home   : project(':feature-home'),
+            feature_search : project(':feature-search'),
+            feature_profile: project(':feature-profile'),
+            feature_player : project(':feature-player')
     ]
 
     components = [

@@ -9,6 +9,7 @@ import com.abecerra.components.R
 import com.abecerra.components.bottomnavigation.viewModel.NavigationItem
 import com.abecerra.components.bottomnavigation.viewModel.NavigationItemMapper
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem
 import kotlinx.android.synthetic.main.view_bottom_navigation.view.*
 
 class BottomNavigationComponent : LinearLayout {
@@ -38,6 +39,7 @@ class BottomNavigationComponent : LinearLayout {
 
     fun setItems(items: List<NavigationItem>) {
         itemList.addAll(items)
+        AHBottomNavigationItem("name", R.drawable.bg_rounded)
         ah_bottom_nav.addItems(NavigationItemMapper.mapToAhBottomNavigationItems(items))
         ah_bottom_nav.titleState = AHBottomNavigation.TitleState.ALWAYS_SHOW
     }
@@ -52,8 +54,9 @@ class BottomNavigationComponent : LinearLayout {
         ah_bottom_nav.accentColor = ContextCompat.getColor(context, R.color.colorAccent)
         ah_bottom_nav.inactiveColor = ContextCompat.getColor(context, R.color.white)
         ah_bottom_nav.setOnTabSelectedListener { position, wasSelected ->
-            if (!wasSelected) listener?.onItemSelected(position)
-            true
+            listener?.let {
+                if (!wasSelected) it.onItemSelected(position) else false
+            } ?: false
         }
     }
 }

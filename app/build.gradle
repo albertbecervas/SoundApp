@@ -44,6 +44,7 @@ dependencies {
     implementation modulesDependencies.feature_home
     implementation modulesDependencies.feature_search
     implementation modulesDependencies.feature_player
+    implementation modulesDependencies.feature_profile
 
     def daggerDependencies = rootProject.ext.dagger
     implementation daggerDependencies.dagger

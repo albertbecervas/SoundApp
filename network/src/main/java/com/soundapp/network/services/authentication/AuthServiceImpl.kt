@@ -47,7 +47,7 @@ class AuthServiceImpl :
         if (it.isSuccessful) {
             it.result?.user?.uid?.let { uid ->
                 success(uid)
-            }?.runCatching {
+            }?:runCatching {
                 error()
             }
         } else error()

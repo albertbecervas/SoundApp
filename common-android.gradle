@@ -60,6 +60,7 @@ dependencies {
     implementation appDependencies.constraintLayout
     implementation appDependencies.recyclerView
     implementation appDependencies.cardView
+    implementation 'com.google.android.material:material:1.0.0'
 
     def testDependencies = rootProject.ext.testing
     testImplementation testDependencies.junit

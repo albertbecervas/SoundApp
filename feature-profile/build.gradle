@@ -1,0 +1,12 @@
+apply plugin: 'com.android.library'
+apply from: "$rootDir/common-android.gradle"
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+dependencies {
+    def modulesDependencies = rootProject.ext.modules
+    implementation modulesDependencies.base
+    implementation modulesDependencies.appResources
+    implementation modulesDependencies.database
+    implementation modulesDependencies.session
+}

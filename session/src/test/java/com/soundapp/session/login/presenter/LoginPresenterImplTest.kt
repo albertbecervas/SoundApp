@@ -2,9 +2,10 @@ package com.soundapp.session.login.presenter
 
 import android.content.Intent
 import com.soundapp.session.authentication.domain.interactor.SessionInteractor
-import com.soundapp.session.login.router.LoginRouter
-import com.soundapp.session.login.view.LoginFragment
-import com.soundapp.session.login.view.LoginView
+import com.soundapp.session.signup.router.SignUpRouter
+import com.soundapp.session.signup.presenter.SignUpPresenterImpl
+import com.soundapp.session.signup.view.SignUpFragment
+import com.soundapp.session.signup.view.SignUpView
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
@@ -17,21 +18,21 @@ class LoginPresenterImplTest {
     private lateinit var sessionInteractor: SessionInteractor
 
     @Mock
-    private lateinit var loginRouter: LoginRouter
+    private lateinit var loginRouter: SignUpRouter
 
     @Mock
-    private lateinit var loginView: LoginView
+    private lateinit var loginView: SignUpView
 
     @Mock
-    private lateinit var loginFragment: LoginFragment
+    private lateinit var loginFragment: SignUpFragment
 
-    private lateinit var presenter: LoginPresenterImpl
+    private lateinit var presenter: SignUpPresenterImpl
 
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
         `when`(loginView.getViewFragment()).thenReturn(loginFragment)
-        presenter = LoginPresenterImpl(loginRouter, sessionInteractor)
+        presenter = SignUpPresenterImpl(loginRouter, sessionInteractor)
         presenter.setView(loginView)
     }
 
@@ -52,7 +53,7 @@ class LoginPresenterImplTest {
         presenter.onSignInWithGoogleClicked()
         val intent = verify(sessionInteractor, times(1))
             .getGoogleSignInIntent()
-        verify(loginRouter).launchGoogleSignIn(intent, LoginFragment.GOOGLE_SIGN_IN, loginFragment)
+        verify(loginRouter).launchGoogleSignIn(intent, SignUpFragment.GOOGLE_SIGN_IN, loginFragment)
     }
 
     @Test

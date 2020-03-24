@@ -20,11 +20,17 @@ class MainPresenterImpl(private val router: MainRouter, private val translator: 
         this.bottomNavigationComponent = bottomNavigationComponent
         this.bottomNavigationComponent
             ?.setBottomNavigationListener(object : BottomNavigationListener {
-                override fun onItemSelected(position: Int) {
+                override fun onItemSelected(position: Int): Boolean {
+                    var shouldSelectItem = true
                     when (position) {
                         HOME_POSITION -> router.loadHomeFragment()
                         SEARCH_POSITION -> router.loadSearchFragment()
+                        PROFILE_POSITION -> {
+                            router.loadProfileFragment()
+                            shouldSelectItem = false
+                        }
                     }
+                    return shouldSelectItem
                 }
             })
         this.bottomNavigationComponent?.setItems(getNavigationItems())
@@ -52,5 +58,6 @@ class MainPresenterImpl(private val router: MainRouter, private val translator: 
     companion object {
         const val HOME_POSITION = 0
         const val SEARCH_POSITION = 1
+        const val PROFILE_POSITION = 2
     }
 }

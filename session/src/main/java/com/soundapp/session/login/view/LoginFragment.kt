@@ -10,7 +10,8 @@ import com.soundapp.session.R
 import com.soundapp.session.login.presenter.LoginPresenter
 import kotlinx.android.synthetic.main.fragment_login.*
 
-open class LoginFragment : BasePresenterFragment<LoginPresenter>(R.layout.fragment_login), LoginView {
+open class LoginFragment : BasePresenterFragment<LoginPresenter>(R.layout.fragment_login),
+    LoginView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
