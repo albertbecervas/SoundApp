@@ -6,6 +6,7 @@ dependencies {
     implementation modulesDependencies.base
     implementation modulesDependencies.appResources
     implementation modulesDependencies.network
+    implementation modulesDependencies.database
 
     def firebaseDependencies = rootProject.ext.firebase
     implementation firebaseDependencies.auth

@@ -2,10 +2,7 @@ package com.soundapp.feature_commons.data
 
 import com.soundapp.feature_commons.domain.model.Song
 import com.soundapp.network.dto.SongDto
-import com.soundapp.network.utils.toBoolean
-import com.soundapp.network.utils.toDouble
-import com.soundapp.network.utils.toInt
-import com.soundapp.network.utils.toString
+import com.soundapp.network.utils.*
 
 object SongDtoMapper {
 
@@ -33,7 +30,7 @@ object SongDtoMapper {
                 artworkUrl60.toString(),
                 artworkUrl100.toString().changeImageSize(),
                 collectionPrice.toDouble(),
-                trackPrice.toDouble(),
+                trackPrice.toDoubleOrZero(),
                 releaseDate.toString(),
                 collectionExplicitness.toString(),
                 trackExplicitness.toString(),

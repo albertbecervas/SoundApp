@@ -6,6 +6,7 @@ import com.soundapp.session.authentication.domain.model.UserForm
 import com.soundapp.session.authentication.domain.repository.SessionRepository
 import com.soundapp.session.authentication.domain.repository.SessionRepositoryOutput
 import com.soundapp.session.user.data.UserDataSource
+import io.realm.Realm
 
 class SessionRepositoryImpl(
     private val authService: AuthService,
@@ -44,5 +45,8 @@ class SessionRepositoryImpl(
     override fun doLogout() {
         authService.logout()
         userDataSource.logOutUser()
+        Realm.getDefaultInstance().executeTransactionAsync {
+            it.deleteAll()
+        }
     }
 }

@@ -53,6 +53,13 @@ fun Any?.toDouble(): Double {
     } ?: 0.0
 }
 
+fun Any?.toDoubleOrZero(): Double {
+    return this?.let {
+        val double = it.toDouble()
+        if (double >= 0) double else 0.0
+    } ?: 0.0
+}
+
 fun Any?.toBoolean(): Boolean {
     return this?.let {
         when (it) {

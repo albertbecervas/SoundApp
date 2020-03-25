@@ -15,7 +15,7 @@ class SongsDaoImpl(private val realm: Realm) : SongsDao {
         realm.executeTransaction {
             val list: List<SavedSongEntity> =
                 it.where(SavedSongEntity::class.java).findAll().reversed()
-            success(list)
+            if (list.isNotEmpty()) success(list)
         }
     }
 }
