@@ -39,6 +39,7 @@ class SearchResultsPresenterImpl(
     }
 
     override fun emptySearch() {
+        getView()?.hideLoading()
         clearResults()
     }
 
@@ -51,7 +52,8 @@ class SearchResultsPresenterImpl(
     override fun onSearchSongsReceived(list: List<Song>) {
         adapter.setItems(SongViewModelMapper.mapSongs(list))
         searchPresenterListener.onSearchResultsReceived()
-        hideEmptyResults()
+        getView()?.hideLoading()
+        getView()?.hideEmptyResults()
         getView()?.showSortComponent()
     }
 
@@ -69,7 +71,7 @@ class SearchResultsPresenterImpl(
 
     private fun clearResults() {
         adapter.clear()
-        hideEmptyResults()
+        getView()?.hideEmptyResults()
         getView()?.hideSortComponent()
     }
 
@@ -79,13 +81,6 @@ class SearchResultsPresenterImpl(
             DURATION -> adapter.getItems().sortedBy { it.duration }
             GENRE -> adapter.getItems().sortedBy { it.genre }
             else -> adapter.getItems()
-        }
-    }
-
-    private fun hideEmptyResults() {
-        getView()?.run {
-            hideLoading()
-            hideEmptyResults()
         }
     }
 

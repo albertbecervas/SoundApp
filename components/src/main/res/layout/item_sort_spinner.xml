@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_marginEnd="30dp"
     android:layout_marginStart="30dp"
-    android:background="@color/cardBackground_soft"
+    android:background="@color/background"
     xmlns:tools="http://schemas.android.com/tools">
 
     <TextView

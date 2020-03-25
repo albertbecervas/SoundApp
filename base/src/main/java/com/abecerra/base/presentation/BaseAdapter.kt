@@ -41,6 +41,14 @@ abstract class BaseAdapter<K : RecyclerView.ViewHolder, L> : RecyclerView.Adapte
         notifyDataSetChanged()
     }
 
+    fun addItemAtPosition(position: Int, item: L) {
+        if (mItems.size > position)
+            mItems.add(position, item)
+        else
+            mItems.add(item)
+        notifyDataSetChanged()
+    }
+
     fun updateItem(item: L) {
         val indexOfItem = mItems.indexOf(item)
         mItems.removeAt(indexOfItem)

@@ -38,7 +38,7 @@ class HomePresenterImpl(
     override fun onRecentPlayedFound(sectionName: String, list: List<SavedSong>) {
         sectionsAdapter.getItems().find { it.sectionName == sectionName }?.let {
             sectionsAdapter.replaceItem(it, SectionViewModelMapper.map(sectionName, list))
-        } ?: sectionsAdapter.addItem(SectionViewModelMapper.map(sectionName, list))
+        } ?: sectionsAdapter.addItemAtPosition(0, SectionViewModelMapper.map(sectionName, list))
     }
 
     override fun onInitialSectionsReady(list: List<HomeSection>) {
