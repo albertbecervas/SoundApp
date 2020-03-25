@@ -69,6 +69,7 @@ dependencies {
     androidTestImplementation testDependencies.mockito_android
     androidTestImplementation testDependencies.android_junit
     androidTestImplementation testDependencies.espresso
+    androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.2.0'
     androidTestImplementation testDependencies.truth
     androidTestImplementation testDependencies.mockWebServer
     debugImplementation testDependencies.fragment

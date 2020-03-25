@@ -14,7 +14,7 @@ class SearchesDaoImpl(private val realm: Realm) : SearchesDao {
     override fun findRecentSearches(success: (list: List<RecentSearchEntity>) -> Unit) {
         realm.executeTransaction {
             var searches: List<RecentSearchEntity> =
-                it.where(RecentSearchEntity::class.java).findAll()
+                it.where(RecentSearchEntity::class.java).findAll().reversed()
             if (searches.size > 5) searches = searches.subList(0, 4)
             success(searches)
         }

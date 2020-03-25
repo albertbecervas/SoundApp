@@ -15,7 +15,7 @@ import com.soundapp.feature_search.suggestions.view.SearchSuggestionsFragment
 
 class SearchPresenterImpl(
     private val router: SearchRouter,
-    private val searchInteractor: SearchInteractor,
+    searchInteractor: SearchInteractor,
     playlistInteractor: PlaylistInteractor
 ) : BasePresenterImpl<SearchView>(), SearchPresenter, SearchPresenterListener {
 

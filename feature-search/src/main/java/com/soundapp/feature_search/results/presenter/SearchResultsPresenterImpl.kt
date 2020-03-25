@@ -33,15 +33,13 @@ class SearchResultsPresenterImpl(
     override fun getSearchResultsAdapter(): SearchResultsAdapter = adapter
 
     override fun onSearch(text: String) {
-        adapter.clear()
-        searchInteractor.searchSongs(text)
         getView()?.showLoading()
+        searchInteractor.searchSongs(text)
+        clearResults()
     }
 
     override fun emptySearch() {
-        adapter.clear()
-        hideEmptyResults()
-        getView()?.hideSortComponent()
+        clearResults()
     }
 
     override fun bindSortComponent(sortComponent: SortComponent) {
@@ -67,6 +65,12 @@ class SearchResultsPresenterImpl(
 
     override fun onSortSelected(id: Int) {
         adapter.setItems(sortAdapterItemsById(id))
+    }
+
+    private fun clearResults() {
+        adapter.clear()
+        hideEmptyResults()
+        getView()?.hideSortComponent()
     }
 
     private fun sortAdapterItemsById(id: Int): List<SongViewModel> {

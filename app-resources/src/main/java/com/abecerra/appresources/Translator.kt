@@ -1,9 +1,6 @@
 package com.abecerra.appresources
 
-import android.content.Context
+interface Translator {
 
-class Translator(private val appContext: Context) {
-
-    fun getString(int: Int): String = appContext.getString(int)
-
+    fun getString(int: Int): String
 }

@@ -2,6 +2,7 @@ package com.abecerra.soundapp.di.module.presentation
 
 import android.content.Context
 import com.abecerra.appresources.Translator
+import com.abecerra.appresources.TranslatorImpl
 import com.abecerra.soundapp.AppApplication
 import com.soundapp.feature_home.presentation.presenter.HomePresenter
 import com.soundapp.feature_home.presentation.view.HomeFragment
@@ -23,8 +24,7 @@ class ViewModule(private val context: Context) {
     fun provideContext(): Context = context
 
     @Provides
-    fun provideTranslator(): Translator =
-        Translator(AppApplication.getInstance())
+    fun provideTranslator(): Translator = TranslatorImpl(AppApplication.getInstance())
 
     @Provides
     fun provideLoginFragment(loginPresenter: LoginPresenter): LoginFragment {
