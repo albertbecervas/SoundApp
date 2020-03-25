@@ -60,7 +60,7 @@ dependencies {
     implementation appDependencies.constraintLayout
     implementation appDependencies.recyclerView
     implementation appDependencies.cardView
-    implementation 'com.google.android.material:material:1.0.0'
+    implementation appDependencies.material
 
     def testDependencies = rootProject.ext.testing
     testImplementation testDependencies.junit
@@ -70,6 +70,7 @@ dependencies {
     androidTestImplementation testDependencies.android_junit
     androidTestImplementation testDependencies.espresso
     androidTestImplementation testDependencies.truth
+    androidTestImplementation testDependencies.mockWebServer
     debugImplementation testDependencies.fragment
 
     def googleDependencies = rootProject.ext.google

@@ -22,6 +22,9 @@ import com.soundapp.session.utils.EditTextViewMatcher.isErrorShown
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.whenever
+import com.soundapp.session.login.presenter.LoginPresenter
+import com.soundapp.session.login.presenter.LoginPresenterImpl
+import com.soundapp.session.login.router.LoginRouter
 import com.soundapp.session.signup.view.SignUpFragment
 import org.junit.Before
 import org.junit.Test
@@ -44,11 +47,11 @@ class LoginFragmentTest {
     private lateinit var googleSignInClient: GoogleSignInClient
 
     @Mock
-    private lateinit var loginRouter: SignUpRouter
+    private lateinit var loginRouter: LoginRouter
 
     private lateinit var sessionRepository: SessionRepository
     private lateinit var sessionInteractor: SessionInteractor
-    private lateinit var loginPresenter: SignUpPresenter
+    private lateinit var loginPresenter: LoginPresenter
 
     private val testUsername = "testUsername"
     private val testPassword = "testPassword"
@@ -60,8 +63,8 @@ class LoginFragmentTest {
 
         sessionRepository = SessionRepositoryImpl(authService, userDataSource)
         sessionInteractor = SessionInteractorImpl(sessionRepository, googleSignInClient)
-        loginPresenter = SignUpPresenterImpl(loginRouter, sessionInteractor)
-        launchFragmentInContainer<SignUpFragment>(factory = LoginFragmentFactory(loginPresenter))
+        loginPresenter = LoginPresenterImpl(loginRouter, sessionInteractor)
+        launchFragmentInContainer<LoginFragment>(factory = LoginFragmentFactory(loginPresenter))
     }
 
     @Test
